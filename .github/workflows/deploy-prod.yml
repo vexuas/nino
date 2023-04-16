@@ -1,0 +1,24 @@
+name: deploy/prod
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Add your deployment process here; personally I deploy it to a DigitalOcean droplet
+
+      - name: Send notification to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_NOTIFICATION_WEBHOOK }}
+          DISCORD_USERNAME: 'My App Release Notification'
+          DISCORD_AVATAR: ''
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: 'Successfully deployed `${{ github.ref_name }}` to production'
