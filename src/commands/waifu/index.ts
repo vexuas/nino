@@ -1,4 +1,4 @@
-import { APIEmbed, SlashCommandBuilder } from 'discord.js';
+import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
 import { isEmpty, reduce } from 'lodash';
 import { SearchWaifuSchema } from '../../schemas/searchWaifu';
 import { getWaifu } from '../../services/adapters';
@@ -15,9 +15,9 @@ const generateWaifuEmbed = (data: SearchWaifuSchema): APIEmbed => {
     ''
   );
   const embed: APIEmbed = {
-    title: 'Waifu Command',
+    title: 'Random Waifu',
     color,
-    description: 'Waifu goes here',
+    description: `${hyperlink('Source', data.source)} | ${hyperlink('Preview', data.preview_url)}`,
     image: {
       url: data.url,
     },
