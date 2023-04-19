@@ -1,46 +1,24 @@
 export interface SearchWaifuAPI {
-  images: {
-    signature: string;
-    extension: string;
-    image_id: number;
-    favorites: number;
-    dominant_color: string;
-    source: string;
-    uploaded_at: string;
-    liked_at: null | string;
-    is_nsfw: boolean;
-    width: number;
-    height: number;
-    byte_size: number;
-    url: string;
-    preview_url: string;
-    tags: {
-      tag_id: number;
-      name: string;
-      description: string;
-      is_nsfw: boolean;
-    }[];
-  }[];
+  images: SearchWaifuSchema[];
 }
 export interface SearchWaifuSchema {
   signature: string;
   extension: string;
-  imageId: number;
+  image_id: number;
   favorites: number;
-  dominantColor: string;
+  dominant_color: string;
   source: string;
-  uploadedAt: string;
-  likedAt: null | string;
-  isNsfw: boolean;
+  uploaded_at: string;
+  liked_at: null | string;
+  is_nsfw: boolean;
   width: number;
   height: number;
-  byteSize: number;
-  url: string;
-  previewUrl: string;
+  byte_size: number;
+  preview_url: string;
   tags: {
-    tagId: number;
+    tag_id: number;
     name: string;
     description: string;
-    isNsfw: boolean;
+    is_nsfw: boolean;
   }[];
 }

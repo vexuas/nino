@@ -4,7 +4,6 @@ import { SearchWaifuAPI, SearchWaifuSchema } from '../schemas/searchWaifu';
 const BASE_URL = 'https://api.waifu.im';
 
 export async function getWaifu(): Promise<SearchWaifuSchema> {
-  const data = (await got.get(`${BASE_URL}/search`).json()) as SearchWaifuAPI;
-
-  return data.images[0];
+  const response = (await got.get(`${BASE_URL}/search`).json()) as SearchWaifuAPI;
+  return response.images[0];
 }
