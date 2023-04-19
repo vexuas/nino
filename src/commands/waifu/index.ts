@@ -4,9 +4,10 @@ import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
 const generateWaifuEmbed = (data: any): APIEmbed => {
+  const color = parseInt(data.dominant_color.replace('#', '0x'));
   const embed: APIEmbed = {
     title: 'Waifu Command',
-    color: 55296,
+    color,
     description: 'Waifu goes here',
     image: {
       url: data.url,
