@@ -14,6 +14,7 @@ const generateWaifuEmbed = (data: SearchWaifuSchema): APIEmbed => {
     },
     ''
   );
+  const orientation: 'Portrait' | 'Landscape' = data.width > data.height ? 'Landscape' : 'Portrait';
   const embed: APIEmbed = {
     title: 'Random Waifu',
     color,
@@ -22,6 +23,11 @@ const generateWaifuEmbed = (data: SearchWaifuSchema): APIEmbed => {
       url: data.url,
     },
     fields: [
+      {
+        name: 'Orientation',
+        value: orientation,
+        inline: true,
+      },
       {
         name: 'Tags',
         value: tags,
