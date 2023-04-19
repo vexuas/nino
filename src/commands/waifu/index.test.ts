@@ -38,13 +38,71 @@ describe('Waifu Command', () => {
     expect(embed.description).not.toBeUndefined();
     expect(embed.color).not.toBeUndefined();
     expect(embed.fields).not.toBeUndefined();
-    expect(embed.fields && embed.fields.length).toHaveLength(2);
+    expect(embed.fields && embed.fields.length).toBe(2);
   });
-  it('shows the correct color of the embed', () => {
-    const dominantColor = '#800000';
-    const embed = generateWaifuEmbed({ ...props, dominant_color: dominantColor });
+  it('shows the correct color in the embed', () => {
+    const embed = generateWaifuEmbed({ ...props, dominant_color: '#800000' });
 
     expect(embed.color).not.toBeUndefined();
-    expect(embed.color).toBe(parseInt(dominantColor.replace('#', '0x')));
+    expect(embed.color).toBe(8388608);
+  });
+  it('shows the correct tags in the embed if there are no tags', () => {
+    const embed = generateWaifuEmbed({ ...props, tags: [] });
+
+    expect(embed.fields).not.toBeUndefined();
+    expect(embed.fields && embed.fields[1].name).toBe('Tags');
+    expect(embed.fields && embed.fields[1].value).toBe('');
+  });
+  it('shows the correct tags in the embed if there is only one tag', () => {
+    const tags = [
+      {
+        tag_id: 1,
+        name: 'waifu',
+        description: 'a description',
+        is_nsfw: false,
+      },
+    ];
+    const embed = generateWaifuEmbed({ ...props, tags });
+
+    expect(embed.fields).not.toBeUndefined();
+    expect(embed.fields && embed.fields[1].name).toBe('Tags');
+    expect(embed.fields && embed.fields[1].value.includes(',')).toBe(false);
+    expect(embed.fields && embed.fields[1].value).toBe('waifu');
+  });
+  it('shows the correct tags in the embed if there are a couple of tags', () => {
+    const tags = [
+      {
+        tag_id: 1,
+        name: 'waifu',
+        description: 'a description',
+        is_nsfw: false,
+      },
+      {
+        tag_id: 2,
+        name: 'uniform',
+        description: 'a description',
+        is_nsfw: false,
+      },
+    ];
+    const embed = generateWaifuEmbed({ ...props, tags });
+
+    expect(embed.fields).not.toBeUndefined();
+    expect(embed.fields && embed.fields[1].name).toBe('Tags');
+    expect(embed.fields && embed.fields[1].value.includes(',')).toBe(true);
+    expect(embed.fields && embed.fields[1].value).toBe('waifu, uniform');
+  });
+  it('shows the correct orientation if width is larger than height', () => {
+    const embed = generateWaifuEmbed({ ...props, width: 1200, height: 1000 });
+
+    expect(embed.fields).not.toBeUndefined();
+    expect(embed.fields && embed.fields[0].name).toBe('Orientation');
+    expect(embed.fields && embed.fields[0].value).toBe('Landscape');
+  });
+  it('shows the correct orientation if height is larger than width', () => {
+    const embed = generateWaifuEmbed({ ...props, width: 1000, height: 1200 });
+
+    expect(embed.fields).not.toBeUndefined();
+    expect(embed.fields && embed.fields[0].name).toBe('Orientation');
+    expect(embed.fields && embed.fields[0].value).toBe('Portrait');
   });
 });

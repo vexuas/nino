@@ -7,6 +7,5 @@ export async function getWaifu(): Promise<WaifuSchema> {
   const response = (await got
     .get(`${BASE_URL}/search?orientation=RANDOM&is_nsfw=FALSE`)
     .json()) as WaifuAPI;
-  console.log(response);
   return response.images[0];
 }

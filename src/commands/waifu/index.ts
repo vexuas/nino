@@ -7,11 +7,10 @@ import { AppCommand, AppCommandOptions } from '../commands';
 
 export const generateWaifuEmbed = (data: WaifuSchema): APIEmbed => {
   const color = parseInt(data.dominant_color.replace('#', '0x'));
-  console.log(color);
   const tags = reduce(
     data.tags,
     (accumulator, value) => {
-      return `${accumulator}${isEmpty(accumulator) ? '' : ','} ${value.name}`;
+      return `${accumulator}${isEmpty(accumulator) ? '' : ', '}${value.name}`;
     },
     ''
   );
