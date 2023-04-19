@@ -16,6 +16,7 @@
     "release": "git fetch --tags --force && git checkout -b release/$(date +'%Y-%m-%d') && yarn auto:release && yarn update:version && git add . && git commit -m 'Update version' && git push -u origin head"
   },
   "dependencies": {
+    "camelcase-keys": "^8.0.2",
     "date-fns": "^2.29.3",
     "discord.js": "^14.8.0",
     "got": "11.8.6",
