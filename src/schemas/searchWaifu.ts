@@ -14,11 +14,13 @@ export interface SearchWaifuSchema {
   width: number;
   height: number;
   byte_size: number;
+  url: string;
   preview_url: string;
-  tags: {
-    tag_id: number;
-    name: string;
-    description: string;
-    is_nsfw: boolean;
-  }[];
+  tags: WaifuTagSchema[];
+}
+export interface WaifuTagSchema {
+  tag_id: number;
+  name: string;
+  description: string;
+  is_nsfw: boolean;
 }
