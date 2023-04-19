@@ -1,4 +1,5 @@
 import { APIEmbed, SlashCommandBuilder } from 'discord.js';
+import { getRandomWaifu } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
@@ -20,6 +21,7 @@ export default {
     try {
       await interaction.deferReply();
       const embed = generateHelloEmbed();
+      await getRandomWaifu();
       await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       sendErrorLog({ error, interaction });
