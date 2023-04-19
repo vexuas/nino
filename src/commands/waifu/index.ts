@@ -1,12 +1,13 @@
 import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
 import { isEmpty, reduce } from 'lodash';
-import { SearchWaifuSchema } from '../../schemas/searchWaifu';
+import { WaifuSchema } from '../../schemas/waifu';
 import { getWaifu } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
-const generateWaifuEmbed = (data: SearchWaifuSchema): APIEmbed => {
+export const generateWaifuEmbed = (data: WaifuSchema): APIEmbed => {
   const color = parseInt(data.dominant_color.replace('#', '0x'));
+  console.log(color);
   const tags = reduce(
     data.tags,
     (accumulator, value) => {

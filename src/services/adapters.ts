@@ -1,12 +1,12 @@
 import got from 'got';
-import { SearchWaifuAPI, SearchWaifuSchema } from '../schemas/searchWaifu';
+import { WaifuAPI, WaifuSchema } from '../schemas/waifu';
 
 const BASE_URL = 'https://api.waifu.im';
 
-export async function getWaifu(): Promise<SearchWaifuSchema> {
+export async function getWaifu(): Promise<WaifuSchema> {
   const response = (await got
     .get(`${BASE_URL}/search?orientation=RANDOM&is_nsfw=FALSE`)
-    .json()) as SearchWaifuAPI;
+    .json()) as WaifuAPI;
   console.log(response);
   return response.images[0];
 }

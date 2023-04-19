@@ -1,7 +1,7 @@
-export interface SearchWaifuAPI {
-  images: SearchWaifuSchema[];
+export interface WaifuAPI {
+  images: WaifuSchema[];
 }
-export interface SearchWaifuSchema {
+export interface WaifuSchema {
   signature: string;
   extension: string;
   image_id: number;
