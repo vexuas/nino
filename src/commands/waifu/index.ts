@@ -38,6 +38,7 @@ export const generateWaifuEmbed = (data: WaifuSchema): APIEmbed => {
 };
 
 export default {
+  commandType: 'Waifu',
   data: new SlashCommandBuilder().setName('waifu').setDescription('Shows a random waifu image'),
   async execute({ interaction }: AppCommandOptions) {
     try {
