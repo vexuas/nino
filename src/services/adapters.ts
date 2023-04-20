@@ -1,4 +1,5 @@
 import got from 'got';
+import { OtakuReactionsAPISchema } from '../schemas/otaku';
 import { WaifuAPI, WaifuSchema } from '../schemas/waifu';
 
 const BASE_URL = 'https://api.waifu.im';
@@ -14,8 +15,9 @@ export async function getWaifu(props?: WaifuProps): Promise<WaifuSchema> {
   return response.images[0];
 }
 
-export async function getOtakuReactions() {
-  const response = await got.get(`https://api.otakugifs.xyz/gif/allreactions`).json();
-  console.log(response);
-  return response;
+export async function getOtakuReactions(): Promise<string[]> {
+  const response = (await got
+    .get(`https://api.otakugifs.xyz/gif/allreactions`)
+    .json()) as OtakuReactionsAPISchema;
+  return response.reactions;
 }
