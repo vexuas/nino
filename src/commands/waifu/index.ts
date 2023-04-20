@@ -1,7 +1,7 @@
 import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
 import { isEmpty, reduce } from 'lodash';
 import { WaifuSchema } from '../../schemas/waifu';
-import { getWaifu } from '../../services/adapters';
+import { getOtakuReactions, getWaifu } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
@@ -44,6 +44,7 @@ export default {
     try {
       await interaction.deferReply();
       const data = await getWaifu();
+      await getOtakuReactions();
       const embed = generateWaifuEmbed(data);
       await interaction.editReply({ embeds: [embed] });
     } catch (error) {

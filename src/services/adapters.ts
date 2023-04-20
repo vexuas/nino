@@ -13,3 +13,9 @@ export async function getWaifu(props?: WaifuProps): Promise<WaifuSchema> {
     .json()) as WaifuAPI;
   return response.images[0];
 }
+
+export async function getOtakuReactions() {
+  const response = await got.get(`https://api.otakugifs.xyz/gif/allreactions`).json();
+  console.log(response);
+  return response;
+}
