@@ -1,5 +1,5 @@
 import got from 'got';
-import { OtakuReactionsAPISchema } from '../schemas/otaku';
+import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
 import { WaifuAPI, WaifuSchema } from '../schemas/waifu';
 
 const BASE_URL = 'https://api.waifu.im';
@@ -22,10 +22,9 @@ export async function getOtakuReactions(): Promise<string[]> {
   return response.reactions;
 }
 
-export async function getOtakuGif(reaction: string) {
-  const response = await got
+export async function getOtakuGif(reaction: string): Promise<OtakuAPISchema> {
+  const response = (await got
     .get(`https://api.otakugifs.xyz/gif?reaction=${reaction}&format=gif`)
-    .json();
-  console.log(response);
+    .json()) as OtakuAPISchema;
   return response;
 }

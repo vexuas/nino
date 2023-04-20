@@ -1,38 +1,13 @@
-import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
-import { isEmpty, reduce } from 'lodash';
-import { WaifuSchema } from '../../schemas/waifu';
-import { getWaifu } from '../../services/adapters';
+import { APIEmbed, SlashCommandBuilder } from 'discord.js';
+import { getOtakuGif } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
-export const generateGifEmbed = (data: WaifuSchema): APIEmbed => {
-  const color = parseInt(data.dominant_color.replace('#', '0x'));
-  const tags = reduce(
-    data.tags,
-    (accumulator, value) => {
-      return `${accumulator}${isEmpty(accumulator) ? '' : ', '}${value.name}`;
-    },
-    ''
-  );
-  const orientation: 'Portrait' | 'Landscape' = data.width > data.height ? 'Landscape' : 'Portrait';
+export const generateGifEmbed = (data: any): APIEmbed => {
   const embed: APIEmbed = {
-    color,
-    description: `${hyperlink('Source', data.source)} | ${hyperlink('Preview', data.preview_url)}`,
     image: {
       url: data.url,
     },
-    fields: [
-      {
-        name: 'Orientation',
-        value: orientation,
-        inline: true,
-      },
-      {
-        name: 'Tags',
-        value: tags,
-        inline: true,
-      },
-    ],
   };
   return embed;
 };
@@ -43,7 +18,7 @@ export default {
   async execute({ interaction }: AppCommandOptions) {
     try {
       await interaction.deferReply();
-      const data = await getWaifu({ isGif: true });
+      const data = await getOtakuGif('kiss');
       const embed = generateGifEmbed(data);
       await interaction.editReply({ embeds: [embed] });
     } catch (error) {
