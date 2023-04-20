@@ -1,50 +1,32 @@
-import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
-import { isEmpty, reduce } from 'lodash';
-import { WaifuSchema } from '../../schemas/waifu';
-import { getWaifu } from '../../services/adapters';
+import { APIEmbed, SlashCommandBuilder } from 'discord.js';
+import { capitalize } from 'lodash';
+import { OtakuAPISchema } from '../../schemas/otaku';
+import { getOtakuGif, getOtakuReactions } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
-export const generateGifEmbed = (data: WaifuSchema): APIEmbed => {
-  const color = parseInt(data.dominant_color.replace('#', '0x'));
-  const tags = reduce(
-    data.tags,
-    (accumulator, value) => {
-      return `${accumulator}${isEmpty(accumulator) ? '' : ', '}${value.name}`;
-    },
-    ''
-  );
-  const orientation: 'Portrait' | 'Landscape' = data.width > data.height ? 'Landscape' : 'Portrait';
+export const generateGifEmbed = (data: OtakuAPISchema, reaction: string): APIEmbed => {
+  const color = parseInt('#ff0055'.replace('#', '0x'));
   const embed: APIEmbed = {
+    title: `Gif Command | ${capitalize(reaction)}`,
     color,
-    description: `${hyperlink('Source', data.source)} | ${hyperlink('Preview', data.preview_url)}`,
     image: {
       url: data.url,
     },
-    fields: [
-      {
-        name: 'Orientation',
-        value: orientation,
-        inline: true,
-      },
-      {
-        name: 'Tags',
-        value: tags,
-        inline: true,
-      },
-    ],
   };
   return embed;
 };
 
 export default {
   commandType: 'Waifu',
-  data: new SlashCommandBuilder().setName('gif').setDescription('Shows a random waifu gif'),
+  data: new SlashCommandBuilder().setName('gif').setDescription('Shows a random anime gif'),
   async execute({ interaction }: AppCommandOptions) {
     try {
       await interaction.deferReply();
-      const data = await getWaifu({ isGif: true });
-      const embed = generateGifEmbed(data);
+      const reactions = await getOtakuReactions();
+      const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
+      const data = await getOtakuGif(randomReaction);
+      const embed = generateGifEmbed(data, randomReaction);
       await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       sendErrorLog({ error, interaction });
