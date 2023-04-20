@@ -21,3 +21,11 @@ export async function getOtakuReactions(): Promise<string[]> {
     .json()) as OtakuReactionsAPISchema;
   return response.reactions;
 }
+
+export async function getOtakuGif(reaction: string) {
+  const response = await got
+    .get(`https://api.otakugifs.xyz/gif?reaction=${reaction}&format=gif`)
+    .json();
+  console.log(response);
+  return response;
+}
