@@ -1,3 +1,27 @@
+# v0.2.0 (Fri Apr 21 2023)
+
+#### 🚀 Enhancement
+
+- Add waifu command [#2](https://github.com/vexuas/nino/pull/2) ([@vexuas](https://github.com/vexuas))
+
+#### 🔧 Tweaks
+
+- Update README.md [#6](https://github.com/vexuas/nino/pull/6) ([@vexuas](https://github.com/vexuas))
+- Use otaku api for gifs [#5](https://github.com/vexuas/nino/pull/5) ([@vexuas](https://github.com/vexuas))
+- Add gif command [#4](https://github.com/vexuas/nino/pull/4) ([@vexuas](https://github.com/vexuas))
+- Cleanup commands [#3](https://github.com/vexuas/nino/pull/3) ([@vexuas](https://github.com/vexuas))
+- Install yarn.lock [#1](https://github.com/vexuas/nino/pull/1) ([@vexuas](https://github.com/vexuas))
+
+#### ⚠️ Pushed to `develop`
+
+- Initial commit ([@vexuas](https://github.com/vexuas))
+
+#### Authors: 1
+
+- Gabriel R ([@vexuas](https://github.com/vexuas))
+
+---
+
 # v0.1.3 (Mon Apr 17 2023)
 
 #### 🔧 Tweaks
