@@ -1,3 +1,4 @@
+//Schema for the otakugifs.xyz API
 export interface OtakuReactionsAPISchema {
   reactions: string[];
 }
