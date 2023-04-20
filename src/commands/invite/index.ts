@@ -4,7 +4,10 @@ import { sendErrorLog } from '../../utils/helpers';
 
 export const generateInviteEmbed = (): APIEmbed => {
   const embed = {
-    description: hyperlink('Add me to your servers! (◕ᴗ◕✿)', ''),
+    description: hyperlink(
+      'Add me to your servers! (◕ᴗ◕✿)',
+      'https://discord.com/api/oauth2/authorize?client_id=1097565092175937699&permissions=3072&scope=bot%20applications.commands'
+    ),
     color: 55296,
   };
   return embed;
