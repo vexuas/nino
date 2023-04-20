@@ -1,10 +1,15 @@
 import { APIEmbed, SlashCommandBuilder } from 'discord.js';
-import { getOtakuGif } from '../../services/adapters';
+import { capitalize } from 'lodash';
+import { OtakuAPISchema } from '../../schemas/otaku';
+import { getOtakuGif, getOtakuReactions } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
-export const generateGifEmbed = (data: any): APIEmbed => {
+export const generateGifEmbed = (data: OtakuAPISchema, reaction: string): APIEmbed => {
+  const color = parseInt('#ff0055'.replace('#', '0x'));
   const embed: APIEmbed = {
+    title: `Gif Command | ${capitalize(reaction)}`,
+    color,
     image: {
       url: data.url,
     },
@@ -18,8 +23,10 @@ export default {
   async execute({ interaction }: AppCommandOptions) {
     try {
       await interaction.deferReply();
-      const data = await getOtakuGif('kiss');
-      const embed = generateGifEmbed(data);
+      const reactions = await getOtakuReactions();
+      const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
+      const data = await getOtakuGif(randomReaction);
+      const embed = generateGifEmbed(data, randomReaction);
       await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       sendErrorLog({ error, interaction });
