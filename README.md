@@ -13,11 +13,11 @@ That being said, I had quite a bit of fun with this even if it just was a test r
 - [Waifu.im](https://www.waifu.im) - Possibly the best waifu resource out there, just top tier waifu images all round and an easy-to-use interface. Great sus collections too if you're into that :shrug:
 
 <div align="left">
-  <img src="https://user-images.githubusercontent.com/42207245/233799276-4787ba05-e759-404b-933b-f0e35df6b8d6.png" width=450  />
-  <img src="https://user-images.githubusercontent.com/42207245/233799344-1a7c2a29-4265-45ae-b76c-7bb3d7ef9d0a.png" width=550  />
+  <img src="https://user-images.githubusercontent.com/42207245/233799276-4787ba05-e759-404b-933b-f0e35df6b8d6.png" width=350  />
+  <img src="https://user-images.githubusercontent.com/42207245/233799344-1a7c2a29-4265-45ae-b76c-7bb3d7ef9d0a.png" width=450  />
 </div>
 <div align="center"> 
-  <img src="https://user-images.githubusercontent.com/42207245/233800078-34e893f9-5a54-4893-9848-737613fd7c72.gif" width=800 />
+  <img src="https://user-images.githubusercontent.com/42207245/233800078-34e893f9-5a54-4893-9848-737613fd7c72.gif" width=600 />
 </div>
 
 ## Command List
