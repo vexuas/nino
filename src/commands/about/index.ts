@@ -5,10 +5,14 @@ import { format } from 'date-fns';
 import { sendErrorLog } from '../../utils/helpers';
 
 export const generateAboutEmbed = (app?: Client): APIEmbed => {
+  const apiSources = `\n• https://www.waifu.im/\n• https://nekos-api.vercel.app/\n• https://otakugifs.xyz/`;
+  const sourceCode = `\n\nYou can find my source code ${hyperlink(
+    'here!',
+    'https://github.com/vexuas/nino'
+  )}`;
   const embed = {
     title: 'Info',
-    description:
-      "Hi there! I'm Nino and I provide an easy way to get waifu images and gifs! I don't really have any preferences so I always give random ones!\n\nMy data is retrieved from https://www.waifu.im/\n\nHappy waifus!",
+    description: `Hi there! I'm Nino and I provide an easy way to get anime images and gifs! I don't really have any preferences so I always give random ones!\n\nMy data is retrieved from these neat APIs!${apiSources}${sourceCode}`,
     color: 55296,
     thumbnail: {
       url: 'https://cdn.discordapp.com/attachments/1097563418237599800/1098660924212117585/nino-waifuim1.png',
@@ -53,7 +57,7 @@ export default {
   commandType: 'Information',
   data: new SlashCommandBuilder()
     .setName('about')
-    .setDescription('Displays information about My App'),
+    .setDescription('Displays information about Nino'),
   async execute({ interaction, app }: AppCommandOptions) {
     try {
       const embed = generateAboutEmbed(app);
