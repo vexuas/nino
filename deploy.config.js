@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'nino',
-      script: './dist/nino.js',
+      script: './dist/App.js',
       watch: false,
       env: {
         BOT_ENV: 'dev',
