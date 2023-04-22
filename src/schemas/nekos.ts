@@ -8,8 +8,8 @@ export interface NekosImageSchema {
   url: string;
   artist: NekosArtistSchema | null;
   source: {
-    name: string;
-    url: string;
+    name: string | null;
+    url: string | null;
   };
   nsfw: boolean;
   original: boolean | null;

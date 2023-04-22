@@ -38,7 +38,7 @@ describe('Waifu Command', () => {
     expect(embed.description).not.toBeUndefined();
     expect(embed.color).not.toBeUndefined();
     expect(embed.fields).not.toBeUndefined();
-    expect(embed.fields && embed.fields.length).toBe(2);
+    expect(embed.fields && embed.fields.length).toBe(1);
   });
   it('shows the correct color in the embed', () => {
     const embed = generateWaifuEmbed({ ...props, dominant_color: '#800000' });
@@ -50,10 +50,10 @@ describe('Waifu Command', () => {
     const embed = generateWaifuEmbed({ ...props, tags: [] });
 
     expect(embed.fields).not.toBeUndefined();
-    expect(embed.fields && embed.fields[1].name).toBe('Tags');
-    expect(embed.fields && embed.fields[1].value).toBe('');
+    expect(embed.fields && embed.fields[0].name).toBe('Tags');
+    expect(embed.fields && embed.fields[0].value).toBe('-');
   });
-  it('shows the correct tags in the embed if there is only one tag', () => {
+  it('shows the correct tag in the embed if there is only one tag', () => {
     const tags = [
       {
         tag_id: 1,
@@ -65,9 +65,9 @@ describe('Waifu Command', () => {
     const embed = generateWaifuEmbed({ ...props, tags });
 
     expect(embed.fields).not.toBeUndefined();
-    expect(embed.fields && embed.fields[1].name).toBe('Tags');
-    expect(embed.fields && embed.fields[1].value.includes(',')).toBe(false);
-    expect(embed.fields && embed.fields[1].value).toBe('waifu');
+    expect(embed.fields && embed.fields[0].name).toBe('Tags');
+    expect(embed.fields && embed.fields[0].value.includes(',')).toBe(false);
+    expect(embed.fields && embed.fields[0].value).toBe('waifu');
   });
   it('shows the correct tags in the embed if there are a couple of tags', () => {
     const tags = [
@@ -87,8 +87,8 @@ describe('Waifu Command', () => {
     const embed = generateWaifuEmbed({ ...props, tags });
 
     expect(embed.fields).not.toBeUndefined();
-    expect(embed.fields && embed.fields[1].name).toBe('Tags');
-    expect(embed.fields && embed.fields[1].value.includes(',')).toBe(true);
-    expect(embed.fields && embed.fields[1].value).toBe('waifu, uniform');
+    expect(embed.fields && embed.fields[0].name).toBe('Tags');
+    expect(embed.fields && embed.fields[0].value.includes(',')).toBe(true);
+    expect(embed.fields && embed.fields[0].value).toBe('waifu, uniform');
   });
 });

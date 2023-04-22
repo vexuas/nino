@@ -40,7 +40,7 @@ export default function ({ app, appCommands }: EventModule) {
       }
       await sendBootNotification(app);
     } catch (error) {
-      console.log(error);
+      sendErrorLog({ error });
     }
   });
 }

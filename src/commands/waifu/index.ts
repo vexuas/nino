@@ -24,7 +24,7 @@ export const generateWaifuEmbed = (data: WaifuSchema): APIEmbed => {
     fields: [
       {
         name: 'Tags',
-        value: tags,
+        value: isEmpty(tags) ? '-' : tags,
         inline: true,
       },
     ],
