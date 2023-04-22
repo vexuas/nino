@@ -29,3 +29,56 @@ Nino uses Discord's Slash Commands `/`:
 - `about` - information hub of Nino
 - `help` - list of commands
 - `about` - generates Nino's invite link
+
+## Prerequisites
+You would need the following before getting started:
+- Have a Discord Application created from the Discord Dev Portal
+- Node with a version of at least v16.13.0
+- Yarn
+
+## Installation
+
+1. Clone this repository and then change directory into it
+    - `git clone git@github.com:vexuas/nino.git`
+    - `cd nino`
+    
+2. Install dependencies
+    - `yarn install`
+    
+3. Add required environment variables
+    - This project needs the following core environment variables to properly work
+        - `ENV`
+        - `BOT_TOKEN`
+        - `BOT_ID`
+        - `GUILD_IDS`
+    - Create a `environment.ts` file under `src/config`
+        - `mkdir src/config && touch src/config/environment.ts`
+    - Export the relevant variables above
+        - ```
+           export const ENV = 'dev';
+           export const BOT_TOKEN = 'Your Discord Bot Token';
+           export const BOT_ID = 'Your Discord Bot ID';
+           export const GUILD_IDS = 'The Discord Server ID you want the bot to register Slash Commands in'
+          ```
+    
+4. Add database configuration
+    - This project uses a PostGreSQL database to store Discord Guild information.
+    - If you don't particularly care about any of that, delete `src/database.ts` and any instances of `USE_DATABASES`
+    - Else, create a `database.ts` file under `src/config` and export a `databaseConfig` variable
+        - ```
+          //Fill these up with your db credentials
+           export const databaseConfig = {
+              database: '',
+              host: '',
+              user: '',
+              port: 1234,
+              password: '',
+              ssl: {
+                rejectUnauthorized: false,
+              },
+           };
+          ```
+ 5. Start the App
+    - `yarn start`
+    
+TODO: Add better instructions and usage examples after finishing up the readme of djs-typescript-template
