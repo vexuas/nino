@@ -1,3 +1,25 @@
+# v0.2.0 (Sun Apr 23 2023)
+
+#### 🚀 Enhancement
+
+- Create image command [#8](https://github.com/vexuas/nino/pull/8) ([@vexuas](https://github.com/vexuas))
+
+#### 🔧 Tweaks
+
+- Update readme with overview and installation guide [#12](https://github.com/vexuas/nino/pull/12) ([@vexuas](https://github.com/vexuas))
+- Add deploy prod workflow [#11](https://github.com/vexuas/nino/pull/11) ([@vexuas](https://github.com/vexuas))
+- Update about command [#9](https://github.com/vexuas/nino/pull/9) ([@vexuas](https://github.com/vexuas))
+
+#### 🏠 Internal
+
+- Release/2023 04 21 [#7](https://github.com/vexuas/nino/pull/7) ([@vexuas](https://github.com/vexuas))
+
+#### Authors: 1
+
+- Gabriel R ([@vexuas](https://github.com/vexuas))
+
+---
+
 # v0.1.0 (Fri Apr 21 2023)
 
 #### 🚀 Enhancement
