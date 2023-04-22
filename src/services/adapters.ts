@@ -38,6 +38,5 @@ export async function getNekosImage(): Promise<NekosImageSchema> {
   const response = (await got
     .get(`https://v1.nekosapi.com/api/image/random?limit=1`)
     .json()) as NekosImageAPISchema;
-  console.log(response);
   return response.data[0];
 }

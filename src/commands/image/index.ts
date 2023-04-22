@@ -48,7 +48,6 @@ export default {
   data: new SlashCommandBuilder().setName('image').setDescription('Shows a random anime image'),
   async execute({ interaction }: AppCommandOptions) {
     try {
-      await interaction.deferReply();
       const data = await getNekosImage();
       const embed = generateImageEmbed(data);
       await interaction.editReply({ embeds: [embed] });

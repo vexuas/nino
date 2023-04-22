@@ -22,7 +22,6 @@ export default {
   data: new SlashCommandBuilder().setName('gif').setDescription('Shows a random anime gif'),
   async execute({ interaction }: AppCommandOptions) {
     try {
-      await interaction.deferReply();
       const reactions = await getOtakuReactions();
       const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
       const data = await getOtakuGif(randomReaction);

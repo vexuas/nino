@@ -37,7 +37,6 @@ export default {
   data: new SlashCommandBuilder().setName('waifu').setDescription('Shows a random waifu image'),
   async execute({ interaction }: AppCommandOptions) {
     try {
-      await interaction.deferReply();
       const data = await getWaifu();
       const embed = generateWaifuEmbed(data);
       await interaction.editReply({ embeds: [embed] });
