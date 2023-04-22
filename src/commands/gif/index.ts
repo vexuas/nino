@@ -8,7 +8,7 @@ import { AppCommand, AppCommandOptions } from '../commands';
 export const generateGifEmbed = (data: OtakuAPISchema, reaction: string): APIEmbed => {
   const color = parseInt('#ff0055'.replace('#', '0x'));
   const embed: APIEmbed = {
-    title: `Gif Command | ${capitalize(reaction)}`,
+    title: `Random Gif | ${capitalize(reaction)}`,
     color,
     image: {
       url: data.url,
@@ -18,7 +18,7 @@ export const generateGifEmbed = (data: OtakuAPISchema, reaction: string): APIEmb
 };
 
 export default {
-  commandType: 'Waifu',
+  commandType: 'Anime',
   data: new SlashCommandBuilder().setName('gif').setDescription('Shows a random anime gif'),
   async execute({ interaction }: AppCommandOptions) {
     try {

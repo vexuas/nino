@@ -1,27 +1,38 @@
 import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
 import { isEmpty, reduce } from 'lodash';
-import { WaifuSchema } from '../../schemas/waifu';
-import { getWaifu } from '../../services/adapters';
+import { NekosImageSchema } from '../../schemas/nekos';
+import { getNekosImage } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
-export const generateWaifuEmbed = (data: WaifuSchema): APIEmbed => {
-  const color = parseInt(data.dominant_color.replace('#', '0x'));
+export const generateImageEmbed = (data: NekosImageSchema): APIEmbed => {
+  const color = parseInt(data.meta.color.replace('#', '0x'));
   const tags = reduce(
-    data.tags,
+    data.categories,
     (accumulator, value) => {
       return `${accumulator}${isEmpty(accumulator) ? '' : ', '}${value.name}`;
     },
     ''
   );
   const embed: APIEmbed = {
-    title: 'Random Waifu',
+    title: 'Random Image',
+    description:
+      data.source.url && data.source.name
+        ? `${hyperlink('Source URL', data.source.url)} | ${hyperlink(
+            'Source Name',
+            data.source.name
+          )}`
+        : undefined,
     color,
-    description: `${hyperlink('Source', data.source)} | ${hyperlink('Preview', data.preview_url)}`,
     image: {
       url: data.url,
     },
     fields: [
+      {
+        name: 'Artist',
+        value: data.artist ? data.artist.name : '-',
+        inline: true,
+      },
       {
         name: 'Tags',
         value: isEmpty(tags) ? '-' : tags,
@@ -34,12 +45,12 @@ export const generateWaifuEmbed = (data: WaifuSchema): APIEmbed => {
 
 export default {
   commandType: 'Anime',
-  data: new SlashCommandBuilder().setName('waifu').setDescription('Shows a random waifu image'),
+  data: new SlashCommandBuilder().setName('image').setDescription('Shows a random anime image'),
   async execute({ interaction }: AppCommandOptions) {
     try {
       await interaction.deferReply();
-      const data = await getWaifu();
-      const embed = generateWaifuEmbed(data);
+      const data = await getNekosImage();
+      const embed = generateImageEmbed(data);
       await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       sendErrorLog({ error, interaction });

@@ -1,5 +1,5 @@
 //Schemas for the waifu.im API; currently only for the GET /search endpoint
-export interface WaifuAPI {
+export interface WaifuAPISchema {
   images: WaifuSchema[];
 }
 export interface WaifuSchema {
