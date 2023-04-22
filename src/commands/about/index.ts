@@ -8,7 +8,7 @@ export const generateAboutEmbed = (app?: Client): APIEmbed => {
   const embed = {
     title: 'Info',
     description:
-      "Hi there! I'm Nino and I provide an easy way to get waifu images and gifs! I don't really have any preferences so I always give random ones!\n\nMy data is retrieved from https://www.waifu.im/\n\nHappy waifus!",
+      "Hi there! I'm Nino and I provide an easy way to get anime images and gifs! I don't really have any preferences so I always give random ones!\n\nMy data is retrieved from the following APIs. They're pretty neat!\n• https://www.waifu.im/\n• https://nekos-api.vercel.app/\n• https://otakugifs.xyz/\n\nHappy waifus!",
     color: 55296,
     thumbnail: {
       url: 'https://cdn.discordapp.com/attachments/1097563418237599800/1098660924212117585/nino-waifuim1.png',
@@ -53,7 +53,7 @@ export default {
   commandType: 'Information',
   data: new SlashCommandBuilder()
     .setName('about')
-    .setDescription('Displays information about My App'),
+    .setDescription('Displays information about Nino'),
   async execute({ interaction, app }: AppCommandOptions) {
     try {
       const embed = generateAboutEmbed(app);
