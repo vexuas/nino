@@ -12,6 +12,7 @@ export interface NekosImageSchema {
     url: string;
   };
   nsfw: boolean;
+  original: boolean | null;
   categories: NekosCategorySchema[];
   characters: NekosCharacterSchema[];
   createdAt: string;
