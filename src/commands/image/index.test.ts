@@ -63,6 +63,24 @@ describe('Image Command', () => {
     expect(embed.color).not.toBeUndefined();
     expect(embed.color).toBe(8388608);
   });
+  it('shows the correct artist in the embed if there is no artist', () => {
+    const embed = generateImageEmbed(props);
+
+    expect(embed.fields && embed.fields[0].name).toBe('Artist');
+    expect(embed.fields && embed.fields[0].value).toBe('-');
+  });
+  it('shows the correct artist in the embed if there is an artist', () => {
+    const artist = {
+      id: '1',
+      name: 'Test artist',
+      url: 'a url',
+      images: 1234,
+    };
+    const embed = generateImageEmbed({ ...props, artist });
+
+    expect(embed.fields && embed.fields[0].name).toBe('Artist');
+    expect(embed.fields && embed.fields[0].value).toBe('Test artist');
+  });
   it('shows the correct categories in the embed if there are no categories', () => {
     const embed = generateImageEmbed({ ...props, categories: [] });
 
