@@ -15,6 +15,7 @@ export const generateImageEmbed = (data: NekosImageSchema): APIEmbed => {
     ''
   );
   const embed: APIEmbed = {
+    title: 'Random Image',
     description:
       data.source.url && data.source.name
         ? `${hyperlink('Source URL', data.source.url)} | ${hyperlink(

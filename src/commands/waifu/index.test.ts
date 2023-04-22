@@ -91,18 +91,4 @@ describe('Waifu Command', () => {
     expect(embed.fields && embed.fields[1].value.includes(',')).toBe(true);
     expect(embed.fields && embed.fields[1].value).toBe('waifu, uniform');
   });
-  it('shows the correct orientation if width is larger than height', () => {
-    const embed = generateWaifuEmbed({ ...props, width: 1200, height: 1000 });
-
-    expect(embed.fields).not.toBeUndefined();
-    expect(embed.fields && embed.fields[0].name).toBe('Orientation');
-    expect(embed.fields && embed.fields[0].value).toBe('Landscape');
-  });
-  it('shows the correct orientation if height is larger than width', () => {
-    const embed = generateWaifuEmbed({ ...props, width: 1000, height: 1200 });
-
-    expect(embed.fields).not.toBeUndefined();
-    expect(embed.fields && embed.fields[0].name).toBe('Orientation');
-    expect(embed.fields && embed.fields[0].value).toBe('Portrait');
-  });
 });

@@ -14,19 +14,14 @@ export const generateWaifuEmbed = (data: WaifuSchema): APIEmbed => {
     },
     ''
   );
-  const orientation: 'Portrait' | 'Landscape' = data.width > data.height ? 'Landscape' : 'Portrait';
   const embed: APIEmbed = {
+    title: 'Random Waifu',
     color,
     description: `${hyperlink('Source', data.source)} | ${hyperlink('Preview', data.preview_url)}`,
     image: {
       url: data.url,
     },
     fields: [
-      {
-        name: 'Orientation',
-        value: orientation,
-        inline: true,
-      },
       {
         name: 'Tags',
         value: tags,
