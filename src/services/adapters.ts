@@ -3,9 +3,9 @@ import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
 import { WaifuAPISchema, WaifuSchema } from '../schemas/waifu';
 
-export async function getWaifu(isGif?: boolean): Promise<WaifuSchema> {
+export async function getWaifu(): Promise<WaifuSchema> {
   const response = (await got
-    .get(`https://api.waifu.im/search?orientation=RANDOM&is_nsfw=false&gif=${isGif && isGif}`)
+    .get(`https://api.waifu.im/search?orientation=RANDOM&is_nsfw=false`)
     .json()) as WaifuAPISchema;
   return response.images[0];
 }
