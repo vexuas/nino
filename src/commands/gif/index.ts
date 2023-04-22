@@ -18,7 +18,7 @@ export const generateGifEmbed = (data: OtakuAPISchema, reaction: string): APIEmb
 };
 
 export default {
-  commandType: 'Waifu',
+  commandType: 'Anime',
   data: new SlashCommandBuilder().setName('gif').setDescription('Shows a random anime gif'),
   async execute({ interaction }: AppCommandOptions) {
     try {
