@@ -15,6 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # git checkout tags/${{ github.ref_name }} -b prod/${{ github.ref_name }}
       # Add your deployment process here; personally I deploy it to a DigitalOcean droplet
       - name: Logs in to DigitalOcean droplet and deploy changes
         uses: appleboy/ssh-action@v0.1.8
@@ -35,7 +36,7 @@ jobs:
             git pull
             git fetch --tags
             git branch | grep -v "develop" | xargs git branch -D            
-            git checkout tags/${{ github.ref_name }} -b prod/${{ github.ref_name }}
+            git checkout -b test/deploy
             echo "${{ secrets.ENVIRONMENT_PROD }}" > src/config/environment.ts
             echo "${{ secrets.DATABASE_PROD }}" > src/config/database.ts
             yarn update:version
