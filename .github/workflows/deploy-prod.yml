@@ -46,8 +46,8 @@ jobs:
       - name: Send notification to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_NOTIFICATION_WEBHOOK }}
-          DISCORD_USERNAME: 'My App Release Notification'
-          DISCORD_AVATAR: ''
+          DISCORD_USERNAME: 'Nino Release Notification'
+          DISCORD_AVATAR: 'https://cdn.discordapp.com/attachments/1097563418237599800/1098660924212117585/nino-waifuim1.png'
         uses: Ilshidur/action-discord@0.3.2
         with:
           args: 'Successfully deployed `${{ github.ref_name }}` to production'
