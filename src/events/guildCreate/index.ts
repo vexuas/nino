@@ -14,8 +14,9 @@ export default function ({ app }: EventModule) {
         const notificationWebhook = new WebhookClient({ url: GUILD_NOTIFICATION_WEBHOOK_URL });
         await notificationWebhook.send({
           embeds: [embed],
-          username: 'My App Server Notification',
-          avatarURL: '',
+          username: 'Nino Server Notification',
+          avatarURL:
+            'https://cdn.discordapp.com/attachments/1097563418237599800/1098660924212117585/nino-waifuim1.png',
         });
       }
     } catch (error) {
