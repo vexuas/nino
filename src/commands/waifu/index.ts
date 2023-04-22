@@ -1,7 +1,7 @@
 import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
 import { isEmpty, reduce } from 'lodash';
 import { WaifuSchema } from '../../schemas/waifu';
-import { getNekosCategories, getWaifu } from '../../services/adapters';
+import { getNekosImage, getWaifu } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
@@ -43,7 +43,7 @@ export default {
   async execute({ interaction }: AppCommandOptions) {
     try {
       await interaction.deferReply();
-      await getNekosCategories();
+      await getNekosImage();
       const data = await getWaifu();
       const embed = generateWaifuEmbed(data);
       await interaction.editReply({ embeds: [embed] });

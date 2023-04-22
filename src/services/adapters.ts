@@ -40,3 +40,8 @@ export async function getNekosCategories() {
     sendErrorLog({ error });
   }
 }
+export async function getNekosImage() {
+  const response = await got.get(`https://v1.nekosapi.com/api/image/random`).json();
+
+  console.log(response);
+}
