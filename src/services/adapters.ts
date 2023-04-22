@@ -1,6 +1,7 @@
 import got from 'got';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
 import { WaifuAPI, WaifuSchema } from '../schemas/waifu';
+import { sendErrorLog } from '../utils/helpers';
 
 const BASE_URL = 'https://api.waifu.im';
 
@@ -27,4 +28,15 @@ export async function getOtakuGif(reaction: string): Promise<OtakuAPISchema> {
     .get(`https://api.otakugifs.xyz/gif?reaction=${reaction}&format=gif`)
     .json()) as OtakuAPISchema;
   return response;
+}
+
+export async function getNekosCategories() {
+  try {
+    const response = await got
+      .get(`https://v1.nekosapi.com/api/category?limit=25&offset=25`)
+      .json();
+    console.log(response);
+  } catch (error) {
+    sendErrorLog({ error });
+  }
 }
