@@ -1,7 +1,7 @@
 import got from 'got';
+import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
-import { WaifuAPI, WaifuSchema } from '../schemas/waifu';
-import { sendErrorLog } from '../utils/helpers';
+import { WaifuAPISchema, WaifuSchema } from '../schemas/waifu';
 
 const BASE_URL = 'https://api.waifu.im';
 
@@ -12,7 +12,7 @@ interface WaifuProps {
 export async function getWaifu(props?: WaifuProps): Promise<WaifuSchema> {
   const response = (await got
     .get(`${BASE_URL}/search?orientation=RANDOM&is_nsfw=false&gif=${props ? props.isGif : false}`)
-    .json()) as WaifuAPI;
+    .json()) as WaifuAPISchema;
   return response.images[0];
 }
 
@@ -31,16 +31,13 @@ export async function getOtakuGif(reaction: string): Promise<OtakuAPISchema> {
 }
 
 export async function getNekosCategories() {
-  try {
-    const response = await got
-      .get(`https://v1.nekosapi.com/api/category?limit=25&offset=25`)
-      .json();
-    return response;
-  } catch (error) {
-    sendErrorLog({ error });
-  }
+  const response = await got.get(`https://v1.nekosapi.com/api/category?limit=25&offset=25`).json();
+  return response;
 }
-export async function getNekosImage() {
-  const response: any = await got.get(`https://v1.nekosapi.com/api/image/random?limit=1`).json();
+export async function getNekosImage(): Promise<NekosImageSchema> {
+  const response = (await got
+    .get(`https://v1.nekosapi.com/api/image/random?limit=1`)
+    .json()) as NekosImageAPISchema;
+  console.log(response);
   return response.data[0];
 }
