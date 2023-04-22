@@ -35,13 +35,12 @@ export async function getNekosCategories() {
     const response = await got
       .get(`https://v1.nekosapi.com/api/category?limit=25&offset=25`)
       .json();
-    console.log(response);
+    return response;
   } catch (error) {
     sendErrorLog({ error });
   }
 }
 export async function getNekosImage() {
-  const response = await got.get(`https://v1.nekosapi.com/api/image/random`).json();
-
-  console.log(response);
+  const response: any = await got.get(`https://v1.nekosapi.com/api/image/random?limit=1`).json();
+  return response.data[0];
 }
