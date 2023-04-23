@@ -1,6 +1,6 @@
 export interface NekosImageV2APIObject {
   data: NekosImageV2APISchema;
-  included?: [];
+  included?: any[]; //TODO: Add each included resource schema here
 }
 export interface NekosImageV2APISchema {
   id: string;
@@ -65,4 +65,8 @@ export interface NekosImageV2RelationshipSchema {
       links: { self: string; related: string };
     };
   };
+}
+export interface NekosImageV2Schema extends NekosImageV2AttributeSchema {
+  categories: { name: string }[];
+  artist: { name: string } | null;
 }

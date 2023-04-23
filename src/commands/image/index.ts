@@ -1,6 +1,7 @@
 import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
 import { isEmpty, reduce } from 'lodash';
 import { NekosImageSchema } from '../../schemas/nekos';
+import { NekosImageV2Schema } from '../../schemas/nekosV2/image';
 import { getNekosImage, getNekosImageV2 } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
@@ -43,14 +44,10 @@ export const generateImageEmbed = (data: NekosImageSchema): APIEmbed => {
   return embed;
 };
 
-export const generateImageEmbedV2 = (data: any): APIEmbed => {
-  const isNSFW = !(
-    data.attributes.ageRating === 'sfw' || data.attributes.ageRating === 'questionable'
-  );
+export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
+  console.log(data);
   const color = parseInt(
-    data.attributes.colors.dominant
-      ? data.attributes.colors.dominant.replace('#', '0x')
-      : '#ff0055'.replace('#', '0x')
+    data.colors.dominant ? data.colors.dominant.replace('#', '0x') : '#ff0055'.replace('#', '0x')
   );
   const tags = reduce(
     data.categories,
@@ -60,14 +57,14 @@ export const generateImageEmbedV2 = (data: any): APIEmbed => {
     ''
   );
   const embed: APIEmbed = {
-    title: `Random Image ${isNSFW ? '| HOLD UP' : ''}`,
+    title: 'Random Image',
     description:
-      data.attributes.source.url && data.attributes.source.name
-        ? `Source: ${hyperlink(data.attributes.source.name, data.attributes.source.url)}`
+      data.source.url && data.source.name
+        ? `Source: ${hyperlink(data.source.name, data.source.url)}`
         : undefined,
     color,
     image: {
-      url: data.attributes.file,
+      url: data.file,
     },
     fields: [
       {
