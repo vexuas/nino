@@ -36,7 +36,7 @@ export async function getNekosImage(): Promise<NekosImageSchema> {
   return response.data[0];
 }
 export async function getNekosImageV2() {
-  const included = ['uploader', 'artist', 'categories', 'characters'];
+  const included = ['uploader', 'artist', 'categories', 'characters', 'liked-by'];
   const includedQueryString = reduce(
     included,
     (accumulator, value) => {
@@ -44,7 +44,7 @@ export async function getNekosImageV2() {
     },
     ''
   );
-  console.log(includedQueryString);
+  //Figure out how to filter out nsfw stuff
   const response: any = await got
     .get(`https://api.nekosapi.com/v2/images/random?include=${includedQueryString}`, {
       headers: {
@@ -53,5 +53,9 @@ export async function getNekosImageV2() {
     })
     .json();
   console.log(response);
+  // console.log(response.data.attributes);
+  // console.log(response.data.relationships);
+  // console.log(response.included);
+
   return response.data;
 }

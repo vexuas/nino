@@ -44,9 +44,14 @@ export const generateImageEmbed = (data: NekosImageSchema): APIEmbed => {
 };
 
 export const generateImageEmbedV2 = (data: any): APIEmbed => {
-  console.log(data.attributes);
-  console.log(data.relationships);
-  const color = parseInt(data.attributes.colors.dominant.replace('#', '0x'));
+  const isNSFW = !(
+    data.attributes.ageRating === 'sfw' || data.attributes.ageRating === 'questionable'
+  );
+  const color = parseInt(
+    data.attributes.colors.dominant
+      ? data.attributes.colors.dominant.replace('#', '0x')
+      : '#ff0055'.replace('#', '0x')
+  );
   const tags = reduce(
     data.categories,
     (accumulator, value) => {
@@ -55,7 +60,7 @@ export const generateImageEmbedV2 = (data: any): APIEmbed => {
     ''
   );
   const embed: APIEmbed = {
-    title: 'Random Image',
+    title: `Random Image ${isNSFW ? '| HOLD UP' : ''}`,
     description:
       data.attributes.source.url && data.attributes.source.name
         ? `Source: ${hyperlink(data.attributes.source.name, data.attributes.source.url)}`
