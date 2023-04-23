@@ -45,7 +45,8 @@ jobs:
         run: >
           echo "export const ENV = 'dev'; export const BOT_TOKEN = ''; export const MIXPANEL_ID = ''; export const TOP_GG_TOKEN = '';
           export const GUILD_IDS = ''; export const GUILD_NOTIFICATION_WEBHOOK_URL = ''; export const USE_DATABASE = false; 
-          export const ERROR_NOTIFICATION_WEBHOOK_URL = ''; export const BOOT_NOTIFICATION_CHANNEL_ID = ''; export const BOT_ID = '';" 
+          export const ERROR_NOTIFICATION_WEBHOOK_URL = ''; export const BOOT_NOTIFICATION_CHANNEL_ID = ''; export const BOT_ID = '';
+          export const FLAGSMITH_KEY = '';" 
           > src/config/environment.ts
 
       - name: Load database config
@@ -75,7 +76,8 @@ jobs:
         run: >
           echo "export const ENV = 'dev'; export const BOT_TOKEN = ''; export const MIXPANEL_ID = ''; export const TOP_GG_TOKEN = '';
           export const GUILD_IDS = ''; export const GUILD_NOTIFICATION_WEBHOOK_URL = ''; export const USE_DATABASE = false; 
-          export const ERROR_NOTIFICATION_WEBHOOK_URL = ''; export const BOOT_NOTIFICATION_CHANNEL_ID = ''; export const BOT_ID = '';"  
+          export const ERROR_NOTIFICATION_WEBHOOK_URL = ''; export const BOOT_NOTIFICATION_CHANNEL_ID = ''; export const BOT_ID = '';
+          export const FLAGSMITH_KEY = '';"  
           > src/config/environment.ts
 
       - name: Load database config

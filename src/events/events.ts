@@ -1,5 +1,6 @@
 import { Client } from 'discord.js';
 import fs from 'fs';
+import Flagsmith from 'flagsmith-nodejs';
 import { Mixpanel } from 'mixpanel';
 import path from 'path';
 import { AppCommand, getApplicationCommands } from '../commands/commands';
@@ -10,6 +11,7 @@ const appCommands = getApplicationCommands();
 interface Props {
   app: Client;
   mixpanel: Mixpanel | null;
+  flagsmith: Flagsmith | null;
 }
 type ExportedEventModule = {
   default: (data: EventModule) => void;
@@ -18,8 +20,9 @@ export type EventModule = {
   app: Client;
   appCommands?: AppCommand[];
   mixpanel?: Mixpanel | null;
+  flagsmith?: Flagsmith | null;
 };
-export function registerEventHandlers({ app, mixpanel }: Props): void {
+export function registerEventHandlers({ app, mixpanel, flagsmith }: Props): void {
   const loadModules = (directoryPath: string) => {
     fs.readdir(directoryPath, { withFileTypes: true }, (error, files) => {
       if (error) {
@@ -34,7 +37,7 @@ export function registerEventHandlers({ app, mixpanel }: Props): void {
           if (file.name === 'index.js') {
             const modulePath = `.${filePath.replace('dist/events', '')}`;
             const currentModule = require(modulePath) as ExportedEventModule;
-            currentModule.default({ app, appCommands, mixpanel });
+            currentModule.default({ app, appCommands, mixpanel, flagsmith });
           }
         });
     });
