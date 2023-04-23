@@ -34,3 +34,14 @@ export async function getNekosImage(): Promise<NekosImageSchema> {
     .json()) as NekosImageAPISchema;
   return response.data[0];
 }
+export async function getNekosImageV2() {
+  const response: any = await got
+    .get(`https://api.nekosapi.com/v2/images/random`, {
+      headers: {
+        accept: 'application/vnd.api+json',
+      },
+    })
+    .json();
+
+  return response.data;
+}
