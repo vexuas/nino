@@ -83,13 +83,16 @@ export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
   !isEmpty(data.artist) &&
     embed.fields?.push({
       name: 'Artist',
-      value: data.artist ? data.artist.name : '-',
+      value:
+        data.artist.officialLinks && data.artist.officialLinks.length > 0
+          ? hyperlink(data.artist.name, data.artist.officialLinks[0])
+          : data.artist.name,
       inline: true,
     });
   !isEmpty(tags) &&
     embed.fields?.push({
       name: 'Tags',
-      value: isEmpty(tags) ? '-' : tags,
+      value: tags,
       inline: true,
     });
   !isEmpty(characters) &&

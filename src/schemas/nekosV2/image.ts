@@ -71,6 +71,7 @@ export interface NekosImageV2RelationshipSchema {
     links: { self: string; related: string };
   };
 }
+//TODO: Add schemas for all these resources
 export interface NekosImageV2Schema extends NekosImageV2AttributeSchema {
   id: string;
   categories: any[];
