@@ -53,11 +53,11 @@ export default {
       const isUseV2Enabled = flags && flags.isFeatureEnabled('use_nekos_api_v2');
       if (isUseV2Enabled) {
         await interaction.editReply({ content: 'v2 is enabled' });
-        return;
+      } else {
+        const data = await getNekosImage();
+        const embed = generateImageEmbed(data);
+        await interaction.editReply({ embeds: [embed] });
       }
-      const data = await getNekosImage();
-      const embed = generateImageEmbed(data);
-      await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       sendErrorLog({ error, interaction });
     }
