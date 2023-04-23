@@ -36,12 +36,12 @@ export async function getNekosImage(): Promise<NekosImageSchema> {
 }
 export async function getNekosImageV2() {
   const response: any = await got
-    .get(`https://api.nekosapi.com/v2/images/random`, {
+    .get(`https://api.nekosapi.com/v2/images/random?include=uploader`, {
       headers: {
         accept: 'application/vnd.api+json',
       },
     })
     .json();
-
+  console.log(response);
   return response.data;
 }

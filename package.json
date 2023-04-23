@@ -23,7 +23,6 @@
     "lodash": "^4.17.21",
     "mixpanel": "^0.17.0",
     "pg": "^8.10.0",
-    "qs": "^6.11.1",
     "topgg-autoposter": "^2.0.1",
     "uuid": "^9.0.0"
   },
@@ -32,7 +31,6 @@
     "@types/jest": "^29.5.0",
     "@types/lodash": "^4.14.191",
     "@types/pg": "^8.6.6",
-    "@types/qs": "^6.9.7",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
