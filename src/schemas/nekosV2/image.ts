@@ -25,14 +25,19 @@ export interface NekosImageV2AttributeSchema {
   dimens: {
     height: number;
     width: number;
-    aspectRation: string | null;
+    aspectRatio: string | null;
+    orientation: string;
   };
   isOriginal: boolean;
   verificationStatus: string;
   ageRating: string;
-  timeStamps: {
+  timestamps: {
     created: string;
     updated: string;
+  };
+  metadata: {
+    mimetype: string;
+    fileSize: number;
   };
 }
 export interface NekosImageV2RelationshipSchema {
@@ -61,12 +66,16 @@ export interface NekosImageV2RelationshipSchema {
   likedBy: {
     meta: {
       count: number;
-      data: { id: string; type: 'likedBy' }[];
-      links: { self: string; related: string };
     };
+    data: { id: string; type: 'likedBy' }[];
+    links: { self: string; related: string };
   };
 }
 export interface NekosImageV2Schema extends NekosImageV2AttributeSchema {
-  categories: { name: string }[];
-  artist: { name: string } | null;
+  id: string;
+  categories: any[];
+  artist: any | null;
+  uploader: any;
+  characters: any[];
+  likedBy: any[];
 }
