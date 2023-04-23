@@ -1,4 +1,5 @@
 import got from 'got';
+import { isEmpty, reduce } from 'lodash';
 import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
 import { WaifuAPISchema, WaifuSchema } from '../schemas/waifu';
@@ -35,8 +36,17 @@ export async function getNekosImage(): Promise<NekosImageSchema> {
   return response.data[0];
 }
 export async function getNekosImageV2() {
+  const included = ['uploader', 'artist', 'categories', 'characters'];
+  const includedQueryString = reduce(
+    included,
+    (accumulator, value) => {
+      return `${accumulator}${isEmpty(accumulator) ? '' : ','}${value}`;
+    },
+    ''
+  );
+  console.log(includedQueryString);
   const response: any = await got
-    .get(`https://api.nekosapi.com/v2/images/random?include=uploader`, {
+    .get(`https://api.nekosapi.com/v2/images/random?include=${includedQueryString}`, {
       headers: {
         accept: 'application/vnd.api+json',
       },
