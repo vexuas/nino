@@ -80,8 +80,6 @@ export async function getNekosImageV2() {
 }
 function nekosImageDecorator({ data, included }: NekosImageV2APIObject): NekosImageV2Schema {
   const { id, attributes, relationships } = data;
-  console.log(relationships);
-  console.log(included);
   const uploaderObj = mapRelationship<any>(relationships.uploader, included);
   const uploader = uploaderObj ? { id: uploaderObj.id, ...uploaderObj.attributes } : null;
   const artistObj = mapRelationship<any>(relationships.artist, included);
