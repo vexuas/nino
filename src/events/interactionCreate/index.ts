@@ -3,7 +3,7 @@ import { sendCommandEvent } from '../../services/analytics';
 import { sendErrorLog } from '../../utils/helpers';
 import { EventModule } from '../events';
 
-export default function ({ app, appCommands, mixpanel }: EventModule) {
+export default function ({ app, appCommands, mixpanel, flagsmith }: EventModule) {
   app.on('interactionCreate', async (interaction: Interaction<CacheType>) => {
     try {
       if (!interaction.inGuild() || !appCommands) return;
@@ -11,7 +11,7 @@ export default function ({ app, appCommands, mixpanel }: EventModule) {
       if (interaction.isCommand()) {
         const { commandName } = interaction;
         const command = appCommands.find((command) => command.data.name === commandName);
-        command && (await command.execute({ interaction, app, appCommands }));
+        command && (await command.execute({ interaction, app, appCommands, flagsmith }));
         mixpanel &&
           sendCommandEvent({
             user: interaction.user,

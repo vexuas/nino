@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { Client, CommandInteraction } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
+import Flagsmith from 'flagsmith-nodejs';
 
 export type AppCommand = {
   data: SlashCommandBuilder;
@@ -12,6 +13,7 @@ export type AppCommandOptions = {
   interaction: CommandInteraction;
   app: Client;
   appCommands?: AppCommand[];
+  flagsmith?: Flagsmith | null;
 };
 type ExportedAppCommand = {
   default: AppCommand;

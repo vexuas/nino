@@ -46,9 +46,15 @@ export const generateImageEmbed = (data: NekosImageSchema): APIEmbed => {
 export default {
   commandType: 'Anime',
   data: new SlashCommandBuilder().setName('image').setDescription('Shows a random anime image'),
-  async execute({ interaction }: AppCommandOptions) {
+  async execute({ interaction, flagsmith }: AppCommandOptions) {
     try {
       await interaction.deferReply();
+      const flags = flagsmith && (await flagsmith.getEnvironmentFlags());
+      const isUseV2Enabled = flags && flags.isFeatureEnabled('use_nekos_api_v2');
+      if (isUseV2Enabled) {
+        await interaction.editReply({ content: 'v2 is enabled' });
+        return;
+      }
       const data = await getNekosImage();
       const embed = generateImageEmbed(data);
       await interaction.editReply({ embeds: [embed] });
