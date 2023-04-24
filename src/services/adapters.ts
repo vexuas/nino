@@ -1,6 +1,7 @@
 import got from 'got';
 import { compact, find, isEmpty, reduce } from 'lodash';
 import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
+import { NekosArtistAPISchema } from '../schemas/nekosV2/artist';
 import { NekosCategoryAPISchema } from '../schemas/nekosV2/categories';
 import { NekosImageV2APIObject, NekosImageV2Schema } from '../schemas/nekosV2/image';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
@@ -88,7 +89,7 @@ function nekosImageDecorator({ data, included }: NekosImageV2APIObject): NekosIm
   const { id, attributes, relationships } = data;
   const uploaderObj = mapRelationship<any>(relationships.uploader, included);
   const uploader = uploaderObj ? { id: uploaderObj.id, ...uploaderObj.attributes } : null;
-  const artistObj = mapRelationship<any>(relationships.artist, included);
+  const artistObj = mapRelationship<NekosArtistAPISchema>(relationships.artist, included);
   const artist = artistObj ? { id: artistObj.id, ...artistObj.attributes } : null;
   const categories = mapRelationships<NekosCategoryAPISchema>(
     relationships.categories,
