@@ -2,7 +2,8 @@ import got from 'got';
 import { compact, find, isEmpty, reduce } from 'lodash';
 import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
 import { NekosArtistAPISchema } from '../schemas/nekosV2/artist';
-import { NekosCategoryAPISchema } from '../schemas/nekosV2/categories';
+import { NekosCategoryAPISchema } from '../schemas/nekosV2/category';
+import { NekosCharacterAPISchema } from '../schemas/nekosV2/character';
 import { NekosImageV2APIObject, NekosImageV2Schema } from '../schemas/nekosV2/image';
 import { NekosUserAPISchema } from '../schemas/nekosV2/user';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
@@ -99,7 +100,10 @@ function nekosImageDecorator({ data, included }: NekosImageV2APIObject): NekosIm
     id: c.id,
     ...c.attributes,
   }));
-  const characters = mapRelationships<any>(relationships.characters, included).map((c: any) => ({
+  const characters = mapRelationships<NekosCharacterAPISchema>(
+    relationships.characters,
+    included
+  ).map((c: any) => ({
     id: c.id,
     ...c.attributes,
   }));

@@ -1,5 +1,6 @@
 import { NekosArtistSchema } from './artist';
-import { NekosCategorySchema } from './categories';
+import { NekosCategorySchema } from './category';
+import { NekosCharacterSchema } from './character';
 import { NekosUserSchema } from './user';
 
 export interface NekosImageV2APIObject {
@@ -81,6 +82,6 @@ export interface NekosImageV2Schema extends NekosImageV2AttributeSchema {
   categories: NekosCategorySchema[];
   artist: NekosArtistSchema | null;
   uploader: NekosUserSchema | null;
-  characters: any[];
+  characters: NekosCharacterSchema[];
   likedBy: any[];
 }
