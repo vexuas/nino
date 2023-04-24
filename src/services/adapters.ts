@@ -1,7 +1,30 @@
 import got from 'got';
+import { compact, find, isEmpty, reduce } from 'lodash';
 import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
+import { NekosImageV2APIObject, NekosImageV2Schema } from '../schemas/nekosV2/image';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
 import { WaifuAPISchema, WaifuSchema } from '../schemas/waifu';
+
+export interface IncludedSchema {
+  attributes: { [key: string]: unknown };
+  id: string;
+  type: string;
+}
+export const mapRelationship = <T extends IncludedSchema>(
+  { data }: { data: { id: string; type: string } | null },
+  included?: IncludedSchema[]
+): T | null => {
+  if (!data || !included) return null;
+  const { type, id } = data;
+  return find(included, { type, id }) as T;
+};
+export const mapRelationships = <T extends IncludedSchema>(
+  { data }: { data: { id: string; type: string }[] | null },
+  included?: IncludedSchema[]
+): T[] => {
+  if (!data || !included) return [];
+  return compact(data.map(({ type, id }) => find(included, { type, id }) as T));
+};
 
 export async function getWaifu(): Promise<WaifuSchema> {
   const response = (await got
@@ -33,4 +56,53 @@ export async function getNekosImage(): Promise<NekosImageSchema> {
     .get(`https://v1.nekosapi.com/api/image/random?limit=1`)
     .json()) as NekosImageAPISchema;
   return response.data[0];
+}
+export async function getNekosImageV2() {
+  //Supported resources: ['uploader', 'artist', 'categories', 'characters', 'liked-by'];
+  const included = ['uploader', 'artist', 'categories', 'characters', 'liked-by'];
+  const includedQueryString = reduce(
+    included,
+    (accumulator, value) => {
+      return `${accumulator}${isEmpty(accumulator) ? '' : ','}${value}`;
+    },
+    ''
+  );
+  //TODO: Figure out how to filter out nsfw stuff
+  const response = (await got
+    .get(`https://api.nekosapi.com/v2/images/random?include=${includedQueryString}`, {
+      headers: {
+        accept: 'application/vnd.api+json',
+      },
+    })
+    .json()) as NekosImageV2APIObject;
+
+  return nekosImageDecorator(response);
+}
+function nekosImageDecorator({ data, included }: NekosImageV2APIObject): NekosImageV2Schema {
+  const { id, attributes, relationships } = data;
+  const uploaderObj = mapRelationship<any>(relationships.uploader, included);
+  const uploader = uploaderObj ? { id: uploaderObj.id, ...uploaderObj.attributes } : null;
+  const artistObj = mapRelationship<any>(relationships.artist, included);
+  const artist = artistObj ? { id: artistObj.id, ...artistObj.attributes } : null;
+  const categories = mapRelationships<any>(relationships.categories, included).map((c: any) => ({
+    id: c.id,
+    ...c.attributes,
+  }));
+  const characters = mapRelationships<any>(relationships.characters, included).map((c: any) => ({
+    id: c.id,
+    ...c.attributes,
+  }));
+  const likedBy = mapRelationships<any>(relationships.likedBy, included).map((c: any) => ({
+    id: c.id,
+    ...c.attributes,
+  }));
+  return {
+    id,
+    ...attributes,
+    categories,
+    characters,
+    artist,
+    uploader,
+    likedBy,
+  };
 }
