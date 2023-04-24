@@ -8,7 +8,7 @@ export interface NekosImageV2APISchema {
   attributes: NekosImageV2AttributeSchema;
   relationships: NekosImageV2RelationshipSchema;
   links: {
-    self: 'https://api.nekosapi.com/v2/images/fb07fa64-cc3e-4ee2-a8df-fb905d457996';
+    self: string;
   };
 }
 export interface NekosImageV2AttributeSchema {

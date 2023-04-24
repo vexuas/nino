@@ -67,13 +67,16 @@ export async function getNekosImageV2() {
     },
     ''
   );
-  //TODO: Figure out how to filter out nsfw stuff
+  //Age Rating filters = 'sfw', 'questionable', 'borderline', 'explicit'
   const response = (await got
-    .get(`https://api.nekosapi.com/v2/images/random?include=${includedQueryString}`, {
-      headers: {
-        accept: 'application/vnd.api+json',
-      },
-    })
+    .get(
+      `https://api.nekosapi.com/v2/images/random?include=${includedQueryString}&filter[ageRating]=sfw`,
+      {
+        headers: {
+          accept: 'application/vnd.api+json',
+        },
+      }
+    )
     .json()) as NekosImageV2APIObject;
 
   return nekosImageDecorator(response);
