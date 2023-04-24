@@ -6,53 +6,49 @@ export interface NekosImageAPISchema {
 export interface NekosImageSchema {
   id: string;
   url: string;
-  artist: NekosArtistSchema | null;
+  artist: {
+    id: string;
+    name: string;
+    url: string;
+    images: number;
+  } | null;
   source: {
     name: string | null;
     url: string | null;
   };
   nsfw: boolean;
   original: boolean | null;
-  categories: NekosCategorySchema[];
-  characters: NekosCharacterSchema[];
+  categories: {
+    id: string;
+    name: string;
+    description: string;
+    nsfw: boolean;
+    createdAt: string;
+  }[];
+  characters: {
+    id: string;
+    name: string;
+    description: string;
+    source: string;
+    gender: string;
+    ages: number[];
+    birth_date: string;
+    nationality: string;
+    occupations: string[];
+    createdAt: string;
+  }[];
   createdAt: string;
-  meta: NekosImageMeta;
-}
-export interface NekosArtistSchema {
-  id: string;
-  name: string;
-  url: string;
-  images: number;
-}
-export interface NekosCategorySchema {
-  id: string;
-  name: string;
-  description: string;
-  nsfw: boolean;
-  createdAt: string;
-}
-export interface NekosCharacterSchema {
-  id: string;
-  name: string;
-  description: string;
-  source: string;
-  gender: string;
-  ages: number[];
-  birth_date: string;
-  nationality: string;
-  occupations: string[];
-  createdAt: string;
-}
-export interface NekosImageMeta {
-  eTag: string;
-  size: number;
-  mimetype: string;
-  color: string;
-  expires: string;
-  dimens: {
-    width: number;
-    height: number;
-    aspectRatio: string;
-    orientation: string;
+  meta: {
+    eTag: string;
+    size: number;
+    mimetype: string;
+    color: string;
+    expires: string;
+    dimens: {
+      width: number;
+      height: number;
+      aspectRatio: string;
+      orientation: string;
+    };
   };
 }
