@@ -41,7 +41,10 @@ export const NEKOS_RANDOM_IMAGE_V2_DECORATED_DATA = {
       description: 'The image is an illustration.',
       sub: 'format',
       isNsfw: false,
-      timestamps: [Object],
+      timestamps: {
+        created: 'date 1',
+        updated: 'date 2',
+      },
     },
     {
       id: '82f2f32c-78ea-4f66-aeaf-59c60a6cbdf8',
@@ -49,13 +52,16 @@ export const NEKOS_RANDOM_IMAGE_V2_DECORATED_DATA = {
       description: 'Has one or more girls.',
       sub: 'character',
       isNsfw: false,
-      timestamps: [Object],
+      timestamps: {
+        created: 'date 1',
+        updated: 'data 2',
+      },
     },
   ],
   characters: [
     {
       id: '15354108-4fd0-42a0-adf4-154cb142ed85',
-      name: { first: 'Hitori', last: 'Gotoh', aliases: [Array] },
+      name: { first: 'Hitori', last: 'Gotoh', aliases: ['Go'] },
       description:
         'Hitori Gotoh, also known as Bocchi-chan is one of the main characters in the manga and anime series, Bocchi the Rock!. She is in the first year of Shuka High School and is in charge of the guitar and lyrics of the band, Kessoku Band.',
       gender: 'Female',
@@ -71,7 +77,7 @@ export const NEKOS_RANDOM_IMAGE_V2_DECORATED_DATA = {
     },
     {
       id: '5a3f432c-e4db-43ed-9e57-af2f27306782',
-      name: { first: 'Ikuyo', last: 'Kita', aliases: [Array] },
+      name: { first: 'Ikuyo', last: 'Kita', aliases: ['Ki'] },
       description:
         'Ikuyo Kita is one of the main characters in the manga and anime series, Bocchi the Rock!. She is in the first year of Shuka High School and is in charge of the guitar and vocals of the band, Kessoku Band. She has great admiration for Ryo Yamada, after seeing her street concert',
       gender: 'Female',
