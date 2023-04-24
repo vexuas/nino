@@ -96,18 +96,18 @@ function nekosImageDecorator({ data, included }: NekosImageV2APIObject): NekosIm
   const categories = mapRelationships<NekosCategoryAPISchema>(
     relationships.categories,
     included
-  ).map((c: any) => ({
+  ).map((c) => ({
     id: c.id,
     ...c.attributes,
   }));
   const characters = mapRelationships<NekosCharacterAPISchema>(
     relationships.characters,
     included
-  ).map((c: any) => ({
+  ).map((c) => ({
     id: c.id,
     ...c.attributes,
   }));
-  const likedBy = mapRelationships<any>(relationships.likedBy, included).map((c: any) => ({
+  const likedBy = mapRelationships<any>(relationships.likedBy, included).map((c) => ({
     id: c.id,
     ...c.attributes,
   }));
