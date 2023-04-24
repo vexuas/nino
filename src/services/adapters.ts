@@ -4,6 +4,7 @@ import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
 import { NekosArtistAPISchema } from '../schemas/nekosV2/artist';
 import { NekosCategoryAPISchema } from '../schemas/nekosV2/categories';
 import { NekosImageV2APIObject, NekosImageV2Schema } from '../schemas/nekosV2/image';
+import { NekosUserAPISchema } from '../schemas/nekosV2/user';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
 import { WaifuAPISchema, WaifuSchema } from '../schemas/waifu';
 
@@ -87,7 +88,7 @@ export async function getNekosImageV2() {
 }
 function nekosImageDecorator({ data, included }: NekosImageV2APIObject): NekosImageV2Schema {
   const { id, attributes, relationships } = data;
-  const uploaderObj = mapRelationship<any>(relationships.uploader, included);
+  const uploaderObj = mapRelationship<NekosUserAPISchema>(relationships.uploader, included);
   const uploader = uploaderObj ? { id: uploaderObj.id, ...uploaderObj.attributes } : null;
   const artistObj = mapRelationship<NekosArtistAPISchema>(relationships.artist, included);
   const artist = artistObj ? { id: artistObj.id, ...artistObj.attributes } : null;

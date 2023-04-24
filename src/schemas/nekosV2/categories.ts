@@ -1,6 +1,6 @@
 export interface NekosCategoryAPIObject {
   data: NekosCategoryAPISchema;
-  included?: unknown[];
+  included?: any[];
 }
 export interface NekosCategoryAPISchema {
   id: string;

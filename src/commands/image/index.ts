@@ -72,7 +72,7 @@ export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
       data.source.url && data.source.name
         ? `${hyperlink(data.source.name, data.source.url)}`
         : 'N.A.'
-    }\n${'Uploaded by'}: ${data.uploader.username}`,
+    }\n${'Uploaded by'}: ${data.uploader ? data.uploader.username : 'N.A.'}`,
     color,
     image: {
       url: data.file,
