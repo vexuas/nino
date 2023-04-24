@@ -1,3 +1,5 @@
+import { NekosCategorySchema } from '../nekos';
+
 export interface NekosImageV2APIObject {
   data: NekosImageV2APISchema;
   included?: any[]; //TODO: Add each included resource schema here
@@ -74,7 +76,7 @@ export interface NekosImageV2RelationshipSchema {
 //TODO: Add schemas for all these resources
 export interface NekosImageV2Schema extends NekosImageV2AttributeSchema {
   id: string;
-  categories: any[];
+  categories: NekosCategorySchema[];
   artist: any | null;
   uploader: any;
   characters: any[];

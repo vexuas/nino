@@ -1,14 +1,17 @@
 import got from 'got';
 import { compact, find, isEmpty, reduce } from 'lodash';
 import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
+import { NekosCategoryAPISchema } from '../schemas/nekosV2/categories';
 import { NekosImageV2APIObject, NekosImageV2Schema } from '../schemas/nekosV2/image';
 import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
 import { WaifuAPISchema, WaifuSchema } from '../schemas/waifu';
 
 export interface IncludedSchema {
-  attributes: { [key: string]: unknown };
+  attributes: unknown;
   id: string;
   type: string;
+  relationships?: unknown;
+  links?: unknown;
 }
 export const mapRelationship = <T extends IncludedSchema>(
   { data }: { data: { id: string; type: string } | null },
@@ -87,7 +90,10 @@ function nekosImageDecorator({ data, included }: NekosImageV2APIObject): NekosIm
   const uploader = uploaderObj ? { id: uploaderObj.id, ...uploaderObj.attributes } : null;
   const artistObj = mapRelationship<any>(relationships.artist, included);
   const artist = artistObj ? { id: artistObj.id, ...artistObj.attributes } : null;
-  const categories = mapRelationships<any>(relationships.categories, included).map((c: any) => ({
+  const categories = mapRelationships<NekosCategoryAPISchema>(
+    relationships.categories,
+    included
+  ).map((c: any) => ({
     id: c.id,
     ...c.attributes,
   }));
