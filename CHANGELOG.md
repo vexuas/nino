@@ -1,3 +1,24 @@
+# v0.3.0 (Mon Apr 24 2023)
+
+#### 🚀 Enhancement
+
+- Migrate to nekos v2 for Images [#15](https://github.com/vexuas/nino/pull/15) ([@vexuas](https://github.com/vexuas))
+
+#### 🔧 Tweaks
+
+- Add sfw filter in nekos query request [#16](https://github.com/vexuas/nino/pull/16) ([@vexuas](https://github.com/vexuas))
+- Install and initialise flagsmith [#14](https://github.com/vexuas/nino/pull/14) ([@vexuas](https://github.com/vexuas))
+
+#### 🏠 Internal
+
+- Release/2023-04-23 [#13](https://github.com/vexuas/nino/pull/13) ([@vexuas](https://github.com/vexuas))
+
+#### Authors: 1
+
+- Gabriel R ([@vexuas](https://github.com/vexuas))
+
+---
+
 # v0.2.0 (Sun Apr 23 2023)
 
 #### 🚀 Enhancement
