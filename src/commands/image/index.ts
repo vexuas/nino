@@ -79,7 +79,7 @@ export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
     },
     fields: [],
   };
-  !isEmpty(data.artist) &&
+  data.artist &&
     embed.fields?.push({
       name: 'Artist',
       value:
