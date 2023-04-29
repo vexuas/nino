@@ -30,4 +30,4 @@ jobs:
           echo "${{ secrets.DATABASE_DEV }}" > src/config/database.ts
 
       - name: Initialise discord bot
-        run: yarn start
+        run: yarn trigger:schedule
