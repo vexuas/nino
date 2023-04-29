@@ -1,0 +1,32 @@
+name: daily/schedule
+
+on:
+  schedule:
+    - cron: '0 14 * * *' # 10pm in Singapore time (minus 8)
+
+jobs:
+  logs-in-discord:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout schedule branch
+        uses: actions/checkout@v3
+        with:
+          ref: schedule/daily-workflow
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Create config files
+        run: |
+          mkdir src/config
+          echo "${{ secrets.ENVIRONMENT_DEV }}" > src/config/environment.ts
+          echo "${{ secrets.DATABASE_DEV }}" > src/config/database.ts
+
+      - name: Initialise discord bot
+        run: yarn trigger:schedule
