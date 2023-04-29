@@ -2,10 +2,7 @@ name: daily/schedule
 
 on:
   schedule:
-    - cron: '40 13 * * *' # 9pm in Singapore time (minus 8)
-  push:
-    branches:
-      - schedule/*
+    - cron: '45 13 * * *' # 9pm in Singapore time (minus 8)
 
 jobs:
   logs-in-discord:
