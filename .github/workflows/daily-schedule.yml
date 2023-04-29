@@ -1,0 +1,13 @@
+name: daily/schedule
+
+on:
+  schedule:
+    - cron: '0 13 * * *' # 9pm in Singapore time (minus 8)
+
+jobs:
+  daily-schedule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
