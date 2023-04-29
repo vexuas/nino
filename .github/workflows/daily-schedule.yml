@@ -25,6 +25,7 @@ jobs:
 
       - name: Create config files
         run: |
+          mkdir src/config
           echo "${{ secrets.ENVIRONMENT_DEV }}" > src/config/environment.ts
           echo "${{ secrets.DATABASE_DEV }}" > src/config/database.ts
 
