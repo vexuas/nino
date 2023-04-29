@@ -45,7 +45,6 @@ export const generateImageEmbed = (data: NekosImageSchema): APIEmbed => {
 };
 
 export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
-  console.log(data);
   const color = parseInt(
     data.colors.dominant ? data.colors.dominant.replace('#', '0x') : '#ff0055'.replace('#', '0x')
   );
@@ -80,7 +79,7 @@ export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
     },
     fields: [],
   };
-  !isEmpty(data.artist) &&
+  data.artist &&
     embed.fields?.push({
       name: 'Artist',
       value:

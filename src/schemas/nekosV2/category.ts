@@ -15,7 +15,10 @@ export interface NekosCategoryAttributes {
   name: string;
   description: string;
   isNsfw: boolean;
-  timestamps: number[];
+  timestamps: {
+    created: string;
+    updated: string;
+  };
 }
 export interface NekosCategorySchema extends NekosCategoryAttributes {
   id: string;
