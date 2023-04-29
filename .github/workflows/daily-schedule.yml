@@ -2,7 +2,7 @@ name: daily/schedule
 
 on:
   schedule:
-    - cron: '20 13 * * *' # 9pm in Singapore time (minus 8)
+    - cron: '35 13 * * *' # 9pm in Singapore time (minus 8)
   push:
     branches:
       - schedule/*
@@ -31,11 +31,3 @@ jobs:
 
       - name: Initialise discord bot
         run: yarn start
-
-  trigger-schedule:
-    needs: logs-in-discord
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 'Trigger schedule'
-        run: 'yarn trigger:schedule'
