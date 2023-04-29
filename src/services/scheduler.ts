@@ -1,4 +1,4 @@
-import { Channel, Client } from 'discord.js';
+import { Channel, Client, userMention } from 'discord.js';
 import { generateGifEmbed } from '../commands/gif';
 import { generateImageEmbedV2 } from '../commands/image';
 import { generateWaifuEmbed } from '../commands/waifu';
@@ -20,7 +20,10 @@ export async function sendScheduledCommands(app: Client) {
     const scheduleChannel: Channel | undefined = app.channels.cache.get('1101852189422518342');
     scheduleChannel &&
       scheduleChannel.isTextBased() &&
-      (await scheduleChannel.send({ embeds: [waifuEmbed, imageEmbed, gifEmbed] }));
+      (await scheduleChannel.send({
+        content: userMention('183444648360935424'),
+        embeds: [waifuEmbed, imageEmbed, gifEmbed],
+      }));
   } catch (error) {
     sendErrorLog({ error });
   }
