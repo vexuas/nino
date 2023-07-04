@@ -1,3 +1,26 @@
+# v0.3.1 (Wed Jul 05 2023)
+
+#### 🧪 Tests
+
+- Add tests for nekos v2 [#19](https://github.com/vexuas/nino/pull/19) ([@vexuas](https://github.com/vexuas))
+
+#### 🔧 Tweaks
+
+- Add img src for gif [#22](https://github.com/vexuas/nino/pull/22) ([@vexuas](https://github.com/vexuas))
+- Set daily schedule to 1:30pm [#21](https://github.com/vexuas/nino/pull/21) ([@vexuas](https://github.com/vexuas))
+- Create schedule worklfow [#20](https://github.com/vexuas/nino/pull/20) ([@vexuas](https://github.com/vexuas))
+- Add schemas for related resources in nekos v2 [#18](https://github.com/vexuas/nino/pull/18) ([@vexuas](https://github.com/vexuas))
+
+#### 🏠 Internal
+
+- Release/2023 04 24 [#17](https://github.com/vexuas/nino/pull/17) ([@vexuas](https://github.com/vexuas))
+
+#### Authors: 1
+
+- Gabriel R ([@vexuas](https://github.com/vexuas))
+
+---
+
 # v0.3.0 (Mon Apr 24 2023)
 
 #### 🚀 Enhancement
