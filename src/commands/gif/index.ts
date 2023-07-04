@@ -1,4 +1,4 @@
-import { APIEmbed, SlashCommandBuilder } from 'discord.js';
+import { APIEmbed, inlineCode, SlashCommandBuilder } from 'discord.js';
 import { capitalize } from 'lodash';
 import { OtakuAPISchema } from '../../schemas/otaku';
 import { getOtakuGif, getOtakuReactions } from '../../services/adapters';
@@ -8,6 +8,7 @@ import { AppCommand, AppCommandOptions } from '../commands';
 export const generateGifEmbed = (data: OtakuAPISchema, reaction: string): APIEmbed => {
   const color = parseInt('#ff0055'.replace('#', '0x'));
   const embed: APIEmbed = {
+    description: `HTML Tag:\n${inlineCode(`<img src="${data.url}" />`)}`,
     title: `Random Gif | ${capitalize(reaction)}`,
     color,
     image: {

@@ -19,6 +19,7 @@ describe('Waifu Command', () => {
     const embed = generateGifEmbed(data, reaction);
 
     expect(embed.title).not.toBeUndefined();
+    expect(embed.description).not.toBeUndefined();
     expect(embed.color).not.toBeUndefined();
     expect(embed.image).not.toBeUndefined();
   });
