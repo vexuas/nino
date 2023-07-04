@@ -2,15 +2,17 @@ name: daily/schedule
 
 on:
   schedule:
-    - cron: '45 13 * * *' # 9pm in Singapore time (minus 8)
+    - cron: '30 5 * * *' # 10pm in Singapore time (minus 8)
 
 jobs:
   logs-in-discord:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout schedule branch
         uses: actions/checkout@v3
+        with:
+          ref: schedule/daily-workflow
 
       - name: Set up Node
         uses: actions/setup-node@v2
