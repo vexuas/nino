@@ -106,6 +106,8 @@ export default {
   data: new SlashCommandBuilder().setName('image').setDescription('Shows a random anime image'),
   async execute({ interaction }: AppCommandOptions) {
     try {
+      // TODO: v2 seems to have been deprecated in favour of v3; eventually migrate to then
+      // In the meantime, back to using v1 so it doesn't block our workflows
       await interaction.deferReply();
       const data = await getNekosImage();
       const embed = generateImageEmbed(data);
