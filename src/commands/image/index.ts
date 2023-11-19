@@ -2,7 +2,7 @@ import { APIEmbed, hyperlink, SlashCommandBuilder } from 'discord.js';
 import { isEmpty, reduce } from 'lodash';
 import { NekosImageSchema } from '../../schemas/nekos';
 import { NekosImageV2Schema } from '../../schemas/nekosV2/image';
-import { getNekosImage, getNekosImageV2 } from '../../services/adapters';
+import { getNekosImage } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
 
@@ -104,20 +104,12 @@ export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
 export default {
   commandType: 'Anime',
   data: new SlashCommandBuilder().setName('image').setDescription('Shows a random anime image'),
-  async execute({ interaction, flagsmith }: AppCommandOptions) {
+  async execute({ interaction }: AppCommandOptions) {
     try {
       await interaction.deferReply();
-      const flags = flagsmith && (await flagsmith.getEnvironmentFlags());
-      const isUseV2Enabled = flags && flags.isFeatureEnabled('use_nekos_api_v2');
-      if (isUseV2Enabled) {
-        const data = await getNekosImageV2();
-        const embed = generateImageEmbedV2(data);
-        await interaction.editReply({ embeds: [embed] });
-      } else {
-        const data = await getNekosImage();
-        const embed = generateImageEmbed(data);
-        await interaction.editReply({ embeds: [embed] });
-      }
+      const data = await getNekosImage();
+      const embed = generateImageEmbed(data);
+      await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       sendErrorLog({ error, interaction });
     }
