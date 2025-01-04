@@ -1,3 +1,27 @@
+# v0.3.2 (Sun Nov 19 2023)
+
+#### 🔧 Tweaks
+
+- Remove nekosapi v2 from image commands [#28](https://github.com/vexuas/nino/pull/28) ([@vexuas](https://github.com/vexuas))
+
+#### 🏠 Internal
+
+- Release/2023 07 05 [#23](https://github.com/vexuas/nino/pull/23) ([@vexuas](https://github.com/vexuas))
+
+#### 🔩 Dependency Updates
+
+- Bump @babel/traverse from 7.21.4 to 7.23.2 [#27](https://github.com/vexuas/nino/pull/27) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump undici from 5.21.2 to 5.26.3 [#26](https://github.com/vexuas/nino/pull/26) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump word-wrap from 1.2.3 to 1.2.4 [#25](https://github.com/vexuas/nino/pull/25) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump semver from 6.3.0 to 6.3.1 [#24](https://github.com/vexuas/nino/pull/24) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Gabriel R ([@vexuas](https://github.com/vexuas))
+
+---
+
 # v0.3.1 (Wed Jul 05 2023)
 
 #### 🧪 Tests

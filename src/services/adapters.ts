@@ -59,7 +59,7 @@ export async function getNekosCategories() {
 }
 export async function getNekosImage(): Promise<NekosImageSchema> {
   const response = (await got
-    .get(`https://v1.nekosapi.com/api/image/random?limit=1`)
+    .get(`https://api.nekosapi.com/v1/image/random?limit=1`)
     .json()) as NekosImageAPISchema;
   return response.data[0];
 }

@@ -15,7 +15,7 @@ export const generateAboutEmbed = (app?: Client): APIEmbed => {
     description: `Hi there! I'm Nino and I provide an easy way to get anime images and gifs! I don't really have any preferences so I always give random ones!\n\nMy data is retrieved from these neat APIs!${apiSources}${sourceCode}`,
     color: 55296,
     thumbnail: {
-      url: 'https://cdn.discordapp.com/attachments/1097563418237599800/1098660924212117585/nino-waifuim1.png',
+      url: 'https://vexuas.b-cdn.net/nino-waifuim1.png',
     },
     fields: [
       {
