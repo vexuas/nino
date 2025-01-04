@@ -46,9 +46,7 @@ export const generateImageEmbed = (data: NekosImageSchema): APIEmbed => {
 
 export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
   const color = parseInt(
-    data.colors.dominant
-      ? data.colors.dominant.replace('#', '0x')
-      : '#ff0055'.replace('#', '0x')
+    data.colors.dominant ? data.colors.dominant.replace('#', '0x') : '#ff0055'.replace('#', '0x')
   );
   const tags = reduce(
     data.categories,
@@ -60,9 +58,9 @@ export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
   const characters = reduce(
     data.characters,
     (accumulator, value) => {
-      return `${accumulator}${isEmpty(accumulator) ? '' : ', '}${
-        value.name.first ?? ''
-      } ${value.name.last ?? ''}`;
+      return `${accumulator}${isEmpty(accumulator) ? '' : ', '}${value.name.first ?? ''} ${
+        value.name.last ?? ''
+      }`;
     },
     ''
   );
@@ -105,9 +103,7 @@ export const generateImageEmbedV2 = (data: NekosImageV2Schema): APIEmbed => {
 };
 export default {
   commandType: 'Anime',
-  data: new SlashCommandBuilder()
-    .setName('image')
-    .setDescription('Shows a random anime image'),
+  data: new SlashCommandBuilder().setName('image').setDescription('Shows a random anime image'),
   async execute({ interaction }: AppCommandOptions) {
     try {
       await interaction.deferReply();
@@ -116,8 +112,7 @@ export default {
       // Jan 2025 Update: Nekos API seems to be wonky, I don't really want to figure out their v3 yet so making this just return as nothing for now
       const temporaryEmbed: APIEmbed = {
         title: 'Random Image',
-        description:
-          'API is currently down. Sorry for the inconvenience. Try `/waifu` instead!',
+        description: 'API is currently down. Sorry for the inconvenience. Try `/waifu` instead!',
         color: 55296,
         thumbnail: {
           url: 'https://vexuas.b-cdn.net/nino-waifuim1.png',
