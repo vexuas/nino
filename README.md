@@ -2,7 +2,7 @@
   <img src="https://vexuas.b-cdn.net/nino-waifuim1.png" width=240px/>
 </div>
 
-# nino | v0.3.0 <br>Random Anime Image App for Discord
+# nino | v0.3.3 <br>Random Anime Image App for Discord
 
 Discord bot that provides an easy way to get anime images and gifs randomly! This project stemmed from me testing how quickly I can get a new Discord app up and running using my [bot template](https://github.com/vexuas/djs-typescript-template). It was so fast (roughly just under a week) in fact that I added way more features out of scope of me initially only wanting to get waifus.
 
