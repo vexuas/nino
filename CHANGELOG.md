@@ -1,3 +1,28 @@
+# v0.3.3 (Sun Jan 05 2025)
+
+#### 🔧 Tweaks
+
+- Remove image command for now [#35](https://github.com/vexuas/nino/pull/35) ([@vexuas](https://github.com/vexuas))
+
+#### 🏠 Internal
+
+- Release/2023 11 19 [#29](https://github.com/vexuas/nino/pull/29) ([@vexuas](https://github.com/vexuas))
+
+#### 🔩 Dependency Updates
+
+- Bump micromatch from 4.0.5 to 4.0.8 [#34](https://github.com/vexuas/nino/pull/34) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump cross-spawn from 7.0.3 to 7.0.6 [#36](https://github.com/vexuas/nino/pull/36) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump braces from 3.0.2 to 3.0.3 [#33](https://github.com/vexuas/nino/pull/33) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump ws from 8.13.0 to 8.17.1 [#32](https://github.com/vexuas/nino/pull/32) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump undici from 5.26.3 to 5.28.4 [#31](https://github.com/vexuas/nino/pull/31) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Gabriel R ([@vexuas](https://github.com/vexuas))
+
+---
+
 # v0.3.2 (Sun Nov 19 2023)
 
 #### 🔧 Tweaks
