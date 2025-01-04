@@ -1,16 +1,13 @@
-import got from "got";
-import { compact, find, isEmpty, reduce } from "lodash";
-import { NekosImageAPISchema, NekosImageSchema } from "../schemas/nekos";
-import { NekosArtistAPISchema } from "../schemas/nekosV2/artist";
-import { NekosCategoryAPISchema } from "../schemas/nekosV2/category";
-import { NekosCharacterAPISchema } from "../schemas/nekosV2/character";
-import {
-  NekosImageV2APIObject,
-  NekosImageV2Schema,
-} from "../schemas/nekosV2/image";
-import { NekosUserAPISchema } from "../schemas/nekosV2/user";
-import { OtakuAPISchema, OtakuReactionsAPISchema } from "../schemas/otaku";
-import { WaifuAPISchema, WaifuSchema } from "../schemas/waifu";
+import got from 'got';
+import { compact, find, isEmpty, reduce } from 'lodash';
+import { NekosImageAPISchema, NekosImageSchema } from '../schemas/nekos';
+import { NekosArtistAPISchema } from '../schemas/nekosV2/artist';
+import { NekosCategoryAPISchema } from '../schemas/nekosV2/category';
+import { NekosCharacterAPISchema } from '../schemas/nekosV2/character';
+import { NekosImageV2APIObject, NekosImageV2Schema } from '../schemas/nekosV2/image';
+import { NekosUserAPISchema } from '../schemas/nekosV2/user';
+import { OtakuAPISchema, OtakuReactionsAPISchema } from '../schemas/otaku';
+import { WaifuAPISchema, WaifuSchema } from '../schemas/waifu';
 
 export interface IncludedSchema {
   attributes: unknown;
@@ -57,9 +54,7 @@ export async function getOtakuGif(reaction: string): Promise<OtakuAPISchema> {
 }
 //TODO: Explore what we can do with categories
 export async function getNekosCategories() {
-  const response = await got
-    .get(`https://v1.nekosapi.com/api/category?limit=25&offset=25`)
-    .json();
+  const response = await got.get(`https://v1.nekosapi.com/api/category?limit=25&offset=25`).json();
   return response;
 }
 export async function getNekosImage(): Promise<NekosImageSchema> {
@@ -70,19 +65,13 @@ export async function getNekosImage(): Promise<NekosImageSchema> {
 }
 export async function getNekosImageV2() {
   //Supported resources: ['uploader', 'artist', 'categories', 'characters', 'liked-by'];
-  const included = [
-    "uploader",
-    "artist",
-    "categories",
-    "characters",
-    "liked-by",
-  ];
+  const included = ['uploader', 'artist', 'categories', 'characters', 'liked-by'];
   const includedQueryString = reduce(
     included,
     (accumulator, value) => {
-      return `${accumulator}${isEmpty(accumulator) ? "" : ","}${value}`;
+      return `${accumulator}${isEmpty(accumulator) ? '' : ','}${value}`;
     },
-    ""
+    ''
   );
   //Age Rating filters = 'sfw', 'questionable', 'borderline', 'explicit'
   const response = (await got
@@ -90,7 +79,7 @@ export async function getNekosImageV2() {
       `https://api.nekosapi.com/v2/images/random?include=${includedQueryString}&filter[ageRating]=sfw`,
       {
         headers: {
-          accept: "application/vnd.api+json",
+          accept: 'application/vnd.api+json',
         },
       }
     )
@@ -98,25 +87,12 @@ export async function getNekosImageV2() {
 
   return nekosImageDecorator(response);
 }
-function nekosImageDecorator({
-  data,
-  included,
-}: NekosImageV2APIObject): NekosImageV2Schema {
+function nekosImageDecorator({ data, included }: NekosImageV2APIObject): NekosImageV2Schema {
   const { id, attributes, relationships } = data;
-  const uploaderObj = mapRelationship<NekosUserAPISchema>(
-    relationships.uploader,
-    included
-  );
-  const uploader = uploaderObj
-    ? { id: uploaderObj.id, ...uploaderObj.attributes }
-    : null;
-  const artistObj = mapRelationship<NekosArtistAPISchema>(
-    relationships.artist,
-    included
-  );
-  const artist = artistObj
-    ? { id: artistObj.id, ...artistObj.attributes }
-    : null;
+  const uploaderObj = mapRelationship<NekosUserAPISchema>(relationships.uploader, included);
+  const uploader = uploaderObj ? { id: uploaderObj.id, ...uploaderObj.attributes } : null;
+  const artistObj = mapRelationship<NekosArtistAPISchema>(relationships.artist, included);
+  const artist = artistObj ? { id: artistObj.id, ...artistObj.attributes } : null;
   const categories = mapRelationships<NekosCategoryAPISchema>(
     relationships.categories,
     included
@@ -131,12 +107,10 @@ function nekosImageDecorator({
     id: c.id,
     ...c.attributes,
   }));
-  const likedBy = mapRelationships<any>(relationships.likedBy, included).map(
-    (c) => ({
-      id: c.id,
-      ...c.attributes,
-    })
-  );
+  const likedBy = mapRelationships<any>(relationships.likedBy, included).map((c) => ({
+    id: c.id,
+    ...c.attributes,
+  }));
   return {
     id,
     ...attributes,
