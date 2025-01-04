@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://cdn.discordapp.com/attachments/1097563418237599800/1098660924212117585/nino-waifuim1.png" width=240px/>
+  <img src="https://vexuas.b-cdn.net/nino-waifuim1.png" width=240px/>
 </div>
 
 # nino | v0.3.0 <br>Random Anime Image App for Discord

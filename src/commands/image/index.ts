@@ -106,9 +106,19 @@ export default {
   data: new SlashCommandBuilder().setName('image').setDescription('Shows a random anime image'),
   async execute({ interaction }: AppCommandOptions) {
     try {
+      await interaction.deferReply();
       // TODO: v2 seems to have been deprecated in favour of v3; eventually migrate to then
       // In the meantime, back to using v1 so it doesn't block our workflows
-      await interaction.deferReply();
+      // Jan 2025 Update: Nekos API seems to be wonky, I don't really want to figure out their v3 yet so making this just return as nothing for now
+      const temporaryEmbed: APIEmbed = {
+        title: 'Random Image',
+        description: 'API is currently down. Sorry for the inconvenience. Try `/waifu` instead!',
+        color: 55296,
+        thumbnail: {
+          url: 'https://vexuas.b-cdn.net/nino-waifuim1.png',
+        },
+      };
+      return await interaction.editReply({ embeds: [temporaryEmbed] });
       const data = await getNekosImage();
       const embed = generateImageEmbed(data);
       await interaction.editReply({ embeds: [embed] });
