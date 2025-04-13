@@ -1,3 +1,28 @@
+# v0.3.4 (Sun Apr 13 2025)
+
+#### 🔧 Tweaks
+
+- Update to use node 18 [#47](https://github.com/vexuas/nino/pull/47) ([@vexuas](https://github.com/vexuas))
+- Create dependabot.yml for monthly dependency updates [#39](https://github.com/vexuas/nino/pull/39) ([@vexuas](https://github.com/vexuas))
+
+#### 🏠 Internal
+
+- Release/2025 01 05 [#37](https://github.com/vexuas/nino/pull/37) ([@vexuas](https://github.com/vexuas))
+
+#### 🔩 Dependency Updates
+
+- Bump ts-jest from 29.1.0 to 29.3.1 [#46](https://github.com/vexuas/nino/pull/46) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump mixpanel from 0.17.0 to 0.18.1 [#43](https://github.com/vexuas/nino/pull/43) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump eslint-plugin-unused-imports from 2.0.0 to 4.1.4 [#41](https://github.com/vexuas/nino/pull/41) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump undici from 5.28.4 to 5.28.5 [#38](https://github.com/vexuas/nino/pull/38) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Gabriel R ([@vexuas](https://github.com/vexuas))
+
+---
+
 # v0.3.3 (Sun Jan 05 2025)
 
 #### 🔧 Tweaks
