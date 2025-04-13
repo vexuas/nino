@@ -36,7 +36,7 @@ Nino uses Discord's Slash Commands `/`:
 You would need the following before getting started:
 
 - Have a Discord Application created from the Discord Dev Portal
-- Node with a version of at least v16.13.0
+- Node with a version of at least v18.0.0
 - Yarn
 
 ## Installation
