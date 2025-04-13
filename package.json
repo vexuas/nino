@@ -19,7 +19,7 @@
     "date-fns": "^2.29.3",
     "discord.js": "^14.8.0",
     "flagsmith-nodejs": "^2.5.2",
-    "got": "11.8.6",
+    "got": "14.4.7",
     "lodash": "^4.17.21",
     "mixpanel": "^0.18.1",
     "pg": "^8.10.0",
