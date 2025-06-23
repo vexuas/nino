@@ -1,3 +1,33 @@
+# v0.3.5 (Tue Jun 24 2025)
+
+#### 🔧 Tweaks
+
+- Update cdn [#60](https://github.com/vexuas/nino/pull/60) ([@vexuas](https://github.com/vexuas))
+
+#### 🏠 Internal
+
+- Release/2025 04 13 [#48](https://github.com/vexuas/nino/pull/48) ([@vexuas](https://github.com/vexuas))
+
+#### 🔩 Dependency Updates
+
+- Bump uuid from 9.0.0 to 11.1.0 [#59](https://github.com/vexuas/nino/pull/59) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump topgg-autoposter from 2.0.1 to 2.0.2 [#58](https://github.com/vexuas/nino/pull/58) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump @typescript-eslint/eslint-plugin from 5.58.0 to 5.62.0 [#56](https://github.com/vexuas/nino/pull/56) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump tsc-watch from 6.0.0 to 7.1.1 [#55](https://github.com/vexuas/nino/pull/55) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump undici from 5.28.5 to 5.29.0 [#54](https://github.com/vexuas/nino/pull/54) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump typescript from 5.0.4 to 5.8.3 [#53](https://github.com/vexuas/nino/pull/53) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump pg and @types/pg [#51](https://github.com/vexuas/nino/pull/51) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump date-fns from 2.29.3 to 4.1.0 [#52](https://github.com/vexuas/nino/pull/52) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump @types/lodash from 4.14.194 to 4.17.16 [#50](https://github.com/vexuas/nino/pull/50) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump auto from 10.44.0 to 11.3.0 [#49](https://github.com/vexuas/nino/pull/49) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Gabriel R ([@vexuas](https://github.com/vexuas))
+
+---
+
 # v0.3.4 (Sun Apr 13 2025)
 
 #### 🔧 Tweaks
