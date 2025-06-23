@@ -3,6 +3,7 @@ import { BOT_UPDATED_AT, BOT_VERSION } from '../../version';
 import { AppCommand, AppCommandOptions } from '../commands';
 import { format } from 'date-fns';
 import { sendErrorLog } from '../../utils/helpers';
+import { ninoLogo } from '../../utils/constants';
 
 export const generateAboutEmbed = (app?: Client): APIEmbed => {
   const apiSources = `\n• https://www.waifu.im/\n• https://nekos-api.vercel.app/\n• https://otakugifs.xyz/`;
@@ -15,7 +16,7 @@ export const generateAboutEmbed = (app?: Client): APIEmbed => {
     description: `Hi there! I'm Nino and I provide an easy way to get anime images and gifs! I don't really have any preferences so I always give random ones!\n\nMy data is retrieved from these neat APIs!${apiSources}${sourceCode}`,
     color: 55296,
     thumbnail: {
-      url: 'https://vexuas.b-cdn.net/nino-waifuim1.png',
+      url: ninoLogo,
     },
     fields: [
       {

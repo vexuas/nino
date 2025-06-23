@@ -5,6 +5,7 @@ import { NekosImageV2Schema } from '../../schemas/nekosV2/image';
 import { getNekosImage } from '../../services/adapters';
 import { sendErrorLog } from '../../utils/helpers';
 import { AppCommand, AppCommandOptions } from '../commands';
+import { ninoLogo } from '../../utils/constants';
 
 export const generateImageEmbed = (data: NekosImageSchema): APIEmbed => {
   const color = parseInt(data.meta.color.replace('#', '0x'));
@@ -115,7 +116,7 @@ export default {
         description: 'API is currently down. Sorry for the inconvenience. Try `/waifu` instead!',
         color: 55296,
         thumbnail: {
-          url: 'https://vexuas.b-cdn.net/nino-waifuim1.png',
+          url: ninoLogo,
         },
       };
       return await interaction.editReply({ embeds: [temporaryEmbed] });
