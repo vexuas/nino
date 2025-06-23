@@ -14,6 +14,7 @@ import {
   ERROR_NOTIFICATION_WEBHOOK_URL,
 } from '../config/environment';
 import { v4 as uuid } from 'uuid';
+import { fallbackLogo, ninoLogo } from './constants';
 
 export const serverNotificationEmbed = async ({
   app,
@@ -24,7 +25,6 @@ export const serverNotificationEmbed = async ({
   guild: Guild;
   type: 'join' | 'leave';
 }): Promise<APIEmbed> => {
-  const defaultIcon = 'https://vexuas.b-cdn.net/you_got_that.png';
   const guildIcon = guild.icon && guild.iconURL();
   const guildOwner =
     type === 'join'
@@ -36,7 +36,7 @@ export const serverNotificationEmbed = async ({
     description: `I'm now in **${app.guilds.cache.size}** servers!`,
     color: type === 'join' ? 55296 : 16711680,
     thumbnail: {
-      url: guildIcon ? guildIcon.replace(/jpeg|jpg/gi, 'png') : defaultIcon,
+      url: guildIcon ? guildIcon.replace(/jpeg|jpg/gi, 'png') : fallbackLogo,
     },
     fields: [
       {
@@ -122,7 +122,7 @@ export const sendErrorLog = async ({
     await notificationWebhook.send({
       embeds: [notificationEmbed],
       username: 'Nino Error Notification',
-      avatarURL: 'https://vexuas.b-cdn.net/nino-waifuim1.png',
+      avatarURL: ninoLogo,
     });
   }
 };

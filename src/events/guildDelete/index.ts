@@ -4,6 +4,7 @@ import { GUILD_NOTIFICATION_WEBHOOK_URL, USE_DATABASE } from '../../config/envir
 import { deleteGuild } from '../../services/database';
 import { sendErrorLog, serverNotificationEmbed } from '../../utils/helpers';
 import { EventModule } from '../events';
+import { ninoLogo } from '../../utils/constants';
 
 export default function ({ app }: EventModule) {
   app.on('guildDelete', async (guild: Guild) => {
@@ -15,7 +16,7 @@ export default function ({ app }: EventModule) {
         await notificationWebhook.send({
           embeds: [embed],
           username: 'Nino Server Notification',
-          avatarURL: 'https://vexuas.b-cdn.net/nino-waifuim1.png',
+          avatarURL: ninoLogo,
         });
       }
     } catch (error) {
