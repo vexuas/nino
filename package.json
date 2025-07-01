@@ -31,7 +31,7 @@
     "@types/jest": "^29.5.0",
     "@types/lodash": "^4.17.16",
     "@types/pg": "^8.11.14",
-    "@types/uuid": "^9.0.1",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.57.1",
     "auto": "^11.3.0",
